@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <configuration>
   <appSettings>
-    <add key="ConnectionKey" value="App"/>
+    <add key="connection_settings_key" value="active"/>
   </appSettings>
   <connectionStrings>
-    <add name="App"
+    <add name="active"
 			 connectionString="@config_connectionstring@"
-			 providerName="System.Data.SqlClient"/>
+			 providerName="@database_provider@"/>
   </connectionStrings>
   <system.web>
     <compilation debug="true">
@@ -19,14 +19,13 @@
     <pages autoEventWireup="false">
     </pages>
     <authentication mode="Windows"/>
-    <httpHandlers>      
-      <add verb="*"
-           path="*.store"
-           type="nothinbutdotnetstore.web.core.RequestHandler,nothinbutdotnetstore" />
+    <httpHandlers>
+      <add path="*.store"
+        verb="*"
+        type="nothinbutdotnetstore.web.core.RawRequestHandler,nothinbutdotnetstore"/>
     </httpHandlers>
-   </system.web>
-  
 
+   </system.web>
   <system.webServer>
   </system.webServer>
 
