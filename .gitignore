@@ -16,9 +16,8 @@ _[Rr]e[Ss]harper.*
 local_properties.rb
 /product/docs/Help/*.*
 artifacts
-/product/config/app.config.vista
+/product/config/app.config
 /product/config/our_custom_config.txt
-/product/config/app.config.xp
 /product/config/log4net.config.xml
 /product/config/hibernate.cfg.xml
 /product/*.web.ui/Bin
@@ -26,4 +25,4 @@ artifacts
 /product/*.web.ui/*.config
 /product/*.web.ui/*.txt
 *.orig
-
+connection_details.rb

@@ -169,10 +169,9 @@
     <None Include="build\tools\Rake\nunit.rb" />
     <None Include="build\tools\Rake\sevenzip.rb" />
     <None Include="build\tools\Rake\string.rb" />
-    <None Include="product\config\app.config.xp.template" />
+    <None Include="product\config\app.config.template" />
     <None Include="product\config\hibernate.cfg.xml.template" />
     <None Include="product\config\log4net.config.xml.template" />
-    <None Include="product\config\startup_pipeline.txt.template" />
     <None Include="product\sql\data\001\001_populate_foo.sql.template" />
     <None Include="product\sql\ddl\001\001_db.sql.template" />
     <None Include="product\sql\ddl\001\002_security.sql.template" />
