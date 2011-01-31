@@ -20,9 +20,9 @@
     </pages>
     <authentication mode="Windows"/>
     <httpHandlers>
-      <add path="*.store"
+      <add path="*"
         verb="*"
-        type="nothinbutdotnetstore.web.core.RawRequestHandler,nothinbutdotnetstore"/>
+        type=""/>
     </httpHandlers>
 
    </system.web>

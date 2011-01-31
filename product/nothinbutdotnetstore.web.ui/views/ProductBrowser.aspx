@@ -34,13 +34,12 @@ Inherits="System.Web.UI.Page" MasterPageFile="Store.master" %>
 								<table>
 									<tr>
 										<td>
-											<asp:button id="addSelectedItemsToCartButton" runat="server" Text="Add Selected Items To Cart" CssClass="normalButton"
-												Width="184px"></asp:button></td>
+                      <input type="button" value="Add Selected Items To Cart" />
 										<td>
-											<asp:Button id="goToCartButton" runat="server" Text="Go To Shopping Cart" CssClass="normalButton"></asp:Button></td>
+                      <input type="button" value="Go To Shopping Cart" />
 										<td>
-											<asp:button id="checkoutButton" runat="server" Text="Continue to checkout" CssClass="normalButton"
-												Width="184px"></asp:button></td>
+                      <input type="button" value="Continue to checkout" />
+										</td>
 									</tr>
 								</table>							
 								    
