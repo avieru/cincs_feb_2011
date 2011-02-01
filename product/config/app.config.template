@@ -8,6 +8,12 @@
 			 connectionString="@config_connectionstring@"
 			 providerName="@database_provider@"/>
   </connectionStrings>
+  <system.data>
+    <DbProviderFactories>
+        <remove invariant="System.Data.SQLite"/>
+        <add name="SQLite Data Provider" invariant="System.Data.SQLite" description=".Net Framework Data Provider for SQLite" type="System.Data.SQLite.SQLiteFactory, System.Data.SQLite"/>
+    </DbProviderFactories>
+  </system.data>
   <system.web>
     <compilation debug="true">
       <assemblies>
