@@ -69,15 +69,14 @@ task :compile => :init do
   MSBuildRunner.compile :compile_target => COMPILE_TARGET, :solution_file => solution_file
 end
 
-task :from_ide do
-  process_template_file(app_config)
+task :from_ide => :expand_all_template_files do
+
   Project.spec_assemblies.each do |assembly|
       FileUtils.cp(app_config.gsub(/\.erb/,""),
       File.join('artifacts',"#{File.basename(assembly)}.config"))
   end
 
   config_files.each do |file|
-    process_template_file(file)
       FileUtils.cp(file.gsub(/\.erb/,""),
       File.join('artifacts',File.basename(file)))
   end
