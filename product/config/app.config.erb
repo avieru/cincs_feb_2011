@@ -5,8 +5,8 @@
   </appSettings>
   <connectionStrings>
     <add name="active"
-			 connectionString="@config_connectionstring@"
-			 providerName="@database_provider@"/>
+    connectionString="<%= @database_details.config_connectionstring %>"
+  providerName="<%= @database_details.database_provider %>"/>
   </connectionStrings>
   <system.data>
     <DbProviderFactories>

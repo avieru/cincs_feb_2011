@@ -1,7 +1,6 @@
 class LocalSettings 
  def create_settings_dictionary()
   settings = {
-  	:app_config_template => "app.config.template" ,
   	:path_to_runtime_log4net_config => File.join(%w[artifacts log4net.config.xml]),
   	:asp_net_worker_process => "aspnet_wp.exe",
   	:startup_page => "DepartmentBrowser.aspx",

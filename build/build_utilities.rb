@@ -16,87 +16,21 @@ class SqlRunner
 end
 
 class LocalSettings
-  attr_reader :settings,:db_details
+  attr_reader :settings
   
 
   def [](setting)
     @settings[setting]
   end
 
-  def initialize(db_details)
-    @db_details = db_details
+  def initialize()
     @settings = create_settings_dictionary
-    @db_details.populate(@settings)
   end
 
 
   def each_pair
     @settings.each_key do|key,value|
       yield key,@settings[key]
-    end
-  end
-end
-
-class TemplateFile
-  attr_reader :template_file_name
-  attr_reader :output_file_name
-
-  def initialize(template_file_name)
-    @template_file_name = template_file_name
-    @output_file_name = template_file_name.gsub('.template','')
-  end
-
-  def generate(settings_dictionary)
-    generate_to(@output_file_name,settings_dictionary)
-  end
-
-  def generate_to_directory(output_directory,settings_dictionary)
-    generate_to(File.join(output_directory,File.basename(@output_file_name)),settings_dictionary)
-  end
-
-  def generate_to_directories(output_directories,settings_dictionary)
-    output_directories.each do |directory|
-      generate_to_directory(directory,settings_dictionary)
-    end
-  end
-
-  def generate_to(output_file,settings_dictionary)
-     File.delete?(output_file) 
-
-     File.open_for_write(output_file) do|generated_file|
-       File.open_for_read(@template_file_name) do|template_line|
-         settings_dictionary.each_key do|key|
-           template_line = template_line.gsub("@#{key}@","#{settings_dictionary[key]}")
-         end
-         generated_file.puts(template_line)
-       end
-     end
-  end
-
-  def to_s()
-    "Template File- Template:#{@template_file_name} : Output:#{@output_file_name}"
-  end
-
-end
-
-class TemplateFileList
-  @template_files
-  def initialize(files_pattern)
-    @template_files  = []
-    FileList.new(files_pattern).each do|file| 
-      @template_files.push(TemplateFile.new(file))
-    end
-  end
-
-  def each()
-    @template_files.each do |file|
-      yield file
-    end
-  end
-
-  def generate_all_output_files(settings)
-    @template_files.each do |file|
-      file.generate(settings)
     end
   end
 end
@@ -114,6 +48,11 @@ class MSBuildRunner
 	end
 end
 
+class String
+  def remove_template_name
+    self.gsub(/\.erb/,"")
+  end
+end
 class File
   def self.open_for_read(file)
      File.open(file,'r').each do|line|
@@ -142,4 +81,5 @@ class File
     File.basename(file,'.*')
   end
 
- end
+end
+

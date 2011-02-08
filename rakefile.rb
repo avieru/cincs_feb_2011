@@ -2,6 +2,7 @@ require 'rake'
 require 'rake/clean'
 require 'fileutils'
 require 'build/project.rb'
+require 'erb'
 
 ['build/tools/Rake','build'].each do|pattern|
   Dir.glob(File.join(File.dirname(__FILE__),pattern,"*.rb")).each do|item|
@@ -11,8 +12,8 @@ require 'build/project.rb'
 end
 
 #load settings that differ by machine
-database_details = DbDetails.new
-local_settings = LocalSettings.new(database_details)
+@database_details = DbDetails.new
+@local_settings = LocalSettings.new(@database_details)
 
 COMPILE_TARGET = 'debug'
 
@@ -22,20 +23,30 @@ def create_sql_fileset(folder)
   FileList.new(File.join('product','sql',folder,'**/*.sql'))
 end
 
-template_files = TemplateFileList.new('**/*.template')
+def process_template_file(file)
+  database_details = @database_details
+  local_settings = @local_settings
+
+  file_name = File.basename(file).gsub(/\.erb/,"")
+  file_name = ".#{file_name}" if (/\.dotfile/ =~ file)
+  output = File.join(File.dirname(file),file_name)
+  File.delete(output) if File.exists?(output)
+  File.open(output,'w') {|converted| converted << ERB.new(File.read(file)).result(binding)}
+end
+
 template_code_dir = File.join('product','templated_code')
 
 
 #configuration files
 config_files = FileList.new(File.join('product','config','*.template')).select{|fn| ! fn.include?('app.config')}
 
-app_config = TemplateFile.new(File.join('product','config',local_settings[:app_config_template]))
+app_config = File.join('product','config','app.config.erb')
 
 def create_sql_fileset(folder)
   FileList.new(File.join('product','sql',folder,'**/*.sql'))
 end
 
-sql_runner = SqlRunner.new(database_details)
+sql_runner = SqlRunner.new(@database_details)
 #
 #target folders that can be run from VS
 solution_file = "solution.sln"
@@ -46,31 +57,35 @@ task :init  => :clean do
   ['artifacts',Project.specs_dir,Project.report_folder].each{|folder| mkdir folder if ! File.exists?(folder)}
 end
 
-desc 'expands all of the template files in the project'
 task :expand_all_template_files do
-  template_files.generate_all_output_files(local_settings.settings)
+  Dir.glob("**/*.erb") do |file|
+    process_template_file(file)
+  end
 end
 
 
 desc 'compiles the project'
-task :compile => :expand_all_template_files do
+task :compile => :init do
   MSBuildRunner.compile :compile_target => COMPILE_TARGET, :solution_file => solution_file
 end
 
-task :from_ide  do
-  app_config.generate_to(File.join(Project.startup_dir,"#{Project.startup_config}"),local_settings.settings)
+task :from_ide do
+  process_template_file(app_config)
   Project.spec_assemblies.each do |assembly|
-      app_config.generate_to(File.join('artifacts',"#{File.basename(assembly)}.config"),local_settings.settings)
+      FileUtils.cp(app_config.gsub(/\.erb/,""),
+      File.join('artifacts',"#{File.basename(assembly)}.config"))
   end
 
   config_files.each do |file|
-    TemplateFile.new(file).generate_to_directories([Project.startup_dir,'artifacts'],local_settings.settings)
+    process_template_file(file)
+      FileUtils.cp(file.gsub(/\.erb/,""),
+      File.join('artifacts',File.basename(file)))
   end
 end
 
 namespace :db do
   desc 'tears down the database and recreates it from the ddl files'
-  task :create_schema => :expand_all_template_files do
+  task :create_schema => [:init,:expand_all_template_files] do
       sql_runner.process_sql_files(create_sql_fileset('ddl'))
 
       sh "build/tools/sql_metal/SqlMetal.exe /server:#{database_details.server_name} /database:#{database_details.initial_catalog} /code:product/nothinbutdotnetstore/dataaccesslayer/generated/ReportingModels.cs /namespace:nothinbutdotnetstore.dataaccesslayer.generated"
