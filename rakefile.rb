@@ -13,7 +13,7 @@ end
 
 #load settings that differ by machine
 @database_details = DbDetails.new
-@local_settings = LocalSettings.new(@database_details)
+@local_settings = LocalSettings.new
 
 COMPILE_TARGET = 'debug'
 
