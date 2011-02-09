@@ -15,6 +15,10 @@ namespace nothinbutdotnetstore.web.core.stub
         {
             yield return new DefaultRequestCommand(x => true,
                                                    new ViewMainDepartmentsInTheStore());
+            yield return new DefaultRequestCommand(x => true,
+                                                   new ViewDepartmentsInDepartment());
+            yield return new DefaultRequestCommand(x => true,
+                                                   new ViewDepartmentProducts());
         }
     }
 }

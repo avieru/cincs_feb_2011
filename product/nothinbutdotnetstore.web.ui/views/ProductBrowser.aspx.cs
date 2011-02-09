@@ -4,7 +4,8 @@ using nothinbutdotnetstore.web.core;
 
 namespace nothinbutdotnetstore.web.ui.views
 {
-    public partial class DepartmentBrowser : BasicViewFor<IEnumerable<Department>>
+    public partial class ProductBrowser : BasicViewFor<IEnumerable<Product>>
     {
+        
     }
 }

@@ -1,39 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Web;
 using Machine.Specifications;
 using Machine.Specifications.DevelopWithPassion.Rhino;
-using nothinbutdotnetstore.tasks;
-using nothinbutdotnetstore.web.application.catalogbrowsing;
+using nothinbutdotnetstore.specs.utility;
 using nothinbutdotnetstore.web.core;
 using Rhino.Mocks;
 
 namespace nothinbutdotnetstore.specs
-{   
+{
     public class RendererSpecs
     {
-        public abstract class concern : Observes<Renderer>
+        public abstract class concern : Observes<Renderer, WebFormRenderer>
         {
-        
         }
 
-        [Subject(typeof(Renderer))]
-        public class when_renderer_renders : concern
+        [Subject(typeof(WebFormRenderer))]
+        public class when_rendering : concern
         {
+            Establish c = () =>
+            {
+                the_current_context = ObjectFactory.create_http_context();
+                view_handler = an<IHttpHandler>();
+                model_object = new OurModel();
+                view_factory = the_dependency<ViewFactory>();
+
+                view_factory.Stub(x => x.create_view_to_display(model_object))
+                    .Return(view_handler);
+
+                provide_a_basic_sut_constructor_argument<ActiveContextResolver>(() => the_current_context);
+            };
+
             Because b = () =>
                 sut.render(model_object);
 
-            It transfers_to_aspx = () =>
-                server_utility.received(x => x.Transfer(template_path));
+            It should_tell_the_handler_that_can_render_the_model_to_execute_in_the_current_context = () =>
+                view_handler.received(x => x.ProcessRequest(the_current_context));
 
-            It adds_model_to_context = () =>
-                server_context_items.received(x => x.Add(model_key, model_object))
+            static OurModel model_object;
+            static IHttpHandler view_handler;
+            static HttpContext the_current_context;
+            static ViewFactory view_factory;
+        }
 
-            static IDictionary server_context_items;
-            static HttpServerUtility server_utility;
-            static string template_path;
-            static object model_object;
-            static object model_key;
+        class OurModel
+        {
         }
     }
 }

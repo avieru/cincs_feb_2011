@@ -1,7 +1,6 @@
 using nothinbutdotnetstore.tasks;
 using nothinbutdotnetstore.tasks.stubs;
 using nothinbutdotnetstore.web.core;
-using nothinbutdotnetstore.web.core.stub;
 
 namespace nothinbutdotnetstore.web.application.catalogbrowsing
 {
@@ -11,7 +10,7 @@ namespace nothinbutdotnetstore.web.application.catalogbrowsing
         Renderer renderer;
 
         public ViewDepartmentProducts() : this(new StubCatalog(),
-                                               new StubRenderer())
+                                               new WebFormRenderer())
         {
         }
 

@@ -74,11 +74,22 @@
     <Compile Include="web\application\catalogbrowsing\ViewDepartmentProducts.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewDepartmentsInDepartment.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewMainDepartmentsInTheStore.cs" />
+    <Compile Include="web\core\ActiveContextResolver.cs" />
     <Compile Include="web\core\ApplicationCommand .cs" />
     <Compile Include="web\core\BasicHandler.cs" />
+    <Compile Include="web\core\BasicViewFor.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="web\core\CommandRegistry.cs" />
     <Compile Include="web\core\DefaultCommandRegistry.cs" />
     <Compile Include="web\core\DefaultFrontController.cs" />
+    <Compile Include="web\core\FormPathRegistry.cs" />
+    <Compile Include="web\core\FormTransfer.cs" />
+    <Compile Include="web\core\PageFactory.cs" />
+    <Compile Include="web\core\stub\StubFormPathRegistry.cs" />
+    <Compile Include="web\core\ViewFactory.cs" />
+    <Compile Include="web\core\ViewFor.cs" />
+    <Compile Include="web\core\WebFormRenderer.cs" />
     <Compile Include="web\core\DefaultRequestCommand.cs" />
     <Compile Include="web\core\FrontController.cs" />
     <Compile Include="web\core\MissingRequestCommand.cs" />
@@ -87,9 +98,9 @@
     <Compile Include="web\core\RequestCommand .cs" />
     <Compile Include="web\core\RequestCriteria.cs" />
     <Compile Include="web\core\RequestFactory.cs" />
-    <Compile Include="web\core\stub\StubRenderer.cs" />
     <Compile Include="web\core\stub\StubRequestFactory.cs" />
     <Compile Include="web\core\stub\StubSetOfCommands.cs" />
+    <Compile Include="web\core\WebFormViewFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

@@ -18,7 +18,7 @@ namespace nothinbutdotnetstore.tasks.stubs
 
         public IEnumerable<Product> get_products_in(Department department)
         {
-            return Enumerable.Range(1, 100).Select(x => new Product {name = x.ToString("Product 0")});
+            return Enumerable.Range(1, 100).Select(x => new Product {name = x.ToString("Product 0"),description = "the description",price = 10m});
         }
     }
 }
