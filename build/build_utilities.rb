@@ -81,5 +81,11 @@ class File
     File.basename(file,'.*')
   end
 
+
 end
 
+class String
+  def name_without_template_extension
+    return self.gsub(/\.erb/,"")
+  end
+end

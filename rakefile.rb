@@ -27,7 +27,7 @@ def process_template_file(file)
   database_details = @database_details
   local_settings = @local_settings
 
-  file_name = File.basename(file).gsub(/\.erb/,"")
+  file_name = File.basename(file).name_without_template_extension
   file_name = ".#{file_name}" if (/\.dotfile/ =~ file)
   output = File.join(File.dirname(file),file_name)
   File.delete(output) if File.exists?(output)
@@ -38,7 +38,7 @@ template_code_dir = File.join('product','templated_code')
 
 
 #configuration files
-config_files = FileList.new(File.join('product','config','*.template')).select{|fn| ! fn.include?('app.config')}
+config_files = FileList.new(File.join('product','config','*.erb')).select{|fn| ! fn.include?('app.config')}
 
 app_config = File.join('product','config','app.config.erb')
 
@@ -70,14 +70,13 @@ task :compile => :init do
 end
 
 task :from_ide => :expand_all_template_files do
-
   Project.spec_assemblies.each do |assembly|
-      FileUtils.cp(app_config.gsub(/\.erb/,""),
+      FileUtils.cp(app_config.name_without_template_extension,
       File.join('artifacts',"#{File.basename(assembly)}.config"))
   end
 
   config_files.each do |file|
-      FileUtils.cp(file.gsub(/\.erb/,""),
+      FileUtils.cp(file.name_without_template_extension,
       File.join('artifacts',File.basename(file)))
   end
 end
