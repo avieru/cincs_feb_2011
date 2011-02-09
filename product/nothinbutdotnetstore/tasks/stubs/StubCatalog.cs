@@ -4,7 +4,7 @@ using nothinbutdotnetstore.web.application.catalogbrowsing;
 
 namespace nothinbutdotnetstore.tasks.stubs
 {
-    public class StubDepartments : Departments
+    public class StubCatalog : Catalog
     {
         public IEnumerable<Department> get_the_main_departments()
         {
@@ -16,7 +16,7 @@ namespace nothinbutdotnetstore.tasks.stubs
             return Enumerable.Range(1, 100).Select(x => new Department {name = x.ToString("Sub Department 0")});
         }
 
-        public IEnumerable<Product> get_products_for(Department department)
+        public IEnumerable<Product> get_products_in(Department department)
         {
             return Enumerable.Range(1, 100).Select(x => new Product {name = x.ToString("Product 0")});
         }

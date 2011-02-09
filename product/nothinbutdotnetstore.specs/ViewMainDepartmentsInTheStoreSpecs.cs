@@ -20,13 +20,13 @@ namespace nothinbutdotnetstore.specs
         {
             Establish c = () =>
             {
-                departments = the_dependency<Departments>();
+                catalog = the_dependency<Catalog>();
                 the_main_departments = new List<Department> {new Department()};
 
                 renderer = the_dependency<Renderer>();
                 request = an<Request>();
 
-                departments.Stub(x => x.get_the_main_departments()).Return(the_main_departments);
+                catalog.Stub(x => x.get_the_main_departments()).Return(the_main_departments);
 
             };
 
@@ -36,7 +36,7 @@ namespace nothinbutdotnetstore.specs
             It should_send_departments_to_renderer = () =>
                 renderer.received(x => x.render(the_main_departments));
 
-            static Departments departments;
+            static Catalog catalog;
             static Request request;
             static Renderer renderer;
             static IEnumerable<Department> the_main_departments;

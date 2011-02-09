@@ -22,12 +22,12 @@ namespace nothinbutdotnetstore.specs
             {
                 request =  an<Request>();
                 renderer = the_dependency<Renderer>();
-                departments = the_dependency<Departments>();
+                catalog = the_dependency<Catalog>();
                 list_of_products = new List<Product> {new Product()};
                 department = new Department();
 
                 request.Stub(x => x.map<Department>()).Return(department);
-                departments.Stub(x => x.get_products_for(department)).Return(list_of_products);
+                catalog.Stub(x => x.get_products_in(department)).Return(list_of_products);
             };
 
             Because b = () =>
@@ -40,7 +40,7 @@ namespace nothinbutdotnetstore.specs
 
             static Renderer renderer;
             static IEnumerable<Product> list_of_products;
-            static Departments departments;
+            static Catalog catalog;
             static Department department;
             static Request request;
         }

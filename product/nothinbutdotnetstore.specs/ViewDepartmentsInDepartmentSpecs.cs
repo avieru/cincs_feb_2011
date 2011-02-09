@@ -23,7 +23,7 @@ namespace nothinbutdotnetstore.specs
             {
                 request = an<Request>();
                 renderer = the_dependency<Renderer>();
-                deparments = the_dependency<Departments>();
+                deparments = the_dependency<Catalog>();
                 list_of_departments_in_department = new List<Department> {new Department()};
                 parent_department = new Department();
 
@@ -45,7 +45,7 @@ namespace nothinbutdotnetstore.specs
 
             static Renderer renderer;
             static IEnumerable<Department> list_of_departments_in_department;
-            static Departments deparments;
+            static Catalog deparments;
             static Department parent_department;
             static Request request;
         }

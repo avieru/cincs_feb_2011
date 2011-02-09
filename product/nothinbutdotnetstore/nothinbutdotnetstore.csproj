@@ -67,8 +67,8 @@
     <Compile Include="Calculator.cs" />
     <Compile Include="DefaultCalculator.cs" />
     <Compile Include="MessageGenerator.cs" />
-    <Compile Include="tasks\Departments.cs" />
-    <Compile Include="tasks\stubs\StubDepartments.cs" />
+    <Compile Include="tasks\Catalog.cs" />
+    <Compile Include="tasks\stubs\StubCatalog.cs" />
     <Compile Include="web\application\catalogbrowsing\Department.cs" />
     <Compile Include="web\application\catalogbrowsing\Product.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewDepartmentProducts.cs" />

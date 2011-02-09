@@ -7,23 +7,23 @@ namespace nothinbutdotnetstore.web.application.catalogbrowsing
 {
     public class ViewMainDepartmentsInTheStore : ApplicationCommand
     {
-        Departments departments;
+        Catalog catalog;
         Renderer renderer;
 
-        public ViewMainDepartmentsInTheStore():this(new StubDepartments(),
+        public ViewMainDepartmentsInTheStore():this(new StubCatalog(),
             new StubRenderer())
         {
         }
 
-        public ViewMainDepartmentsInTheStore(Departments departments, Renderer renderer)
+        public ViewMainDepartmentsInTheStore(Catalog catalog, Renderer renderer)
         {
-            this.departments = departments;
+            this.catalog = catalog;
             this.renderer = renderer;
         }
 
         public void run(Request request)
         {
-            renderer.render(departments.get_the_main_departments());
+            renderer.render(catalog.get_the_main_departments());
         }
     }
 }
