@@ -3,13 +3,19 @@
 Inherits="nothinbutdotnetstore.web.ui.views.DepartmentBrowser"
 CodeFile="DepartmentBrowser.aspx.cs"
  MasterPageFile="Store.master" %>
+<%@ Import Namespace="System.Collections.Generic" %>
+<%@ Import Namespace="nothinbutdotnetstore.web.application.catalogbrowsing" %>
 <asp:Content ID="content" runat="server" ContentPlaceHolderID="childContentPlaceHolder">
     <p class="ListHead">Select An Department</p>
             <table>            
               <%--each department should go here--%>
+              <% foreach (var department in ((IEnumerable<Department>)this.Context.Items["blah"]))
+                 {%>
               <tr class="ListItem">
-                 <td>Department Name</td>
+                 <td><%= department.name %></td>
            	  </tr>        
+              <%
+                 }%>
       	    </table>            
 </asp:Content>
 
