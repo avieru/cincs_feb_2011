@@ -67,6 +67,9 @@
     <Compile Include="Calculator.cs" />
     <Compile Include="DefaultCalculator.cs" />
     <Compile Include="MessageGenerator.cs" />
+    <Compile Include="web\application\catalogbrowsing\Department.cs" />
+    <Compile Include="web\application\catalogbrowsing\DepartmentStore.cs" />
+    <Compile Include="web\application\catalogbrowsing\renderers\Renderer.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewMainDepartmentsInTheStore.cs" />
     <Compile Include="web\core\ApplicationCommand .cs" />
     <Compile Include="web\core\BasicHandler.cs" />

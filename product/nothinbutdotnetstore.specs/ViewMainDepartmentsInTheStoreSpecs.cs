@@ -12,9 +12,29 @@ namespace nothinbutdotnetstore.specs
         {
         }
 
-        [Subject(typeof(ViewMainDepartmentsInTheStoreSpecs))]
-        public class when_observation_name : concern
+        [Subject(typeof(ViewMainDepartmentsInTheStore))]
+        public class when_run : concern
         {
+            Establish c = () =>
+            {
+                department_store = an<DepartmentStore>();
+                request = an<Request>();
+                renderer = an<Renderer>();
+            };
+
+            Because b = () =>
+                sut.run(request);
+
+
+            It should_request_departments_from_department_store = () =>
+                department_store.received(x => x.get_departments());
+
+            It should_send_departments_to_renderer = () =>
+                renderer.received(x => x.render());
+
+            static DepartmentStore department_store;
+            static Request request;
+            static Renderer renderer;
         }
     }
 }
