@@ -4,6 +4,13 @@ namespace nothinbutdotnetstore.web.core
 {
     public class DefaultRequestCommand : RequestCommand
     {
+        RequestCriteria request_criteria;
+
+        public DefaultRequestCommand(RequestCriteria request_criteria)
+        {
+            this.request_criteria = request_criteria;
+        }
+
         public void run(Request request)
         {
             throw new NotImplementedException();
@@ -11,7 +18,7 @@ namespace nothinbutdotnetstore.web.core
 
         public bool can_handle(Request request)
         {
-            throw new NotImplementedException();
+            return request_criteria.Invoke(request);
         }
     }
 }
