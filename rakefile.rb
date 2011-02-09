@@ -75,9 +75,14 @@ task :from_ide => :expand_all_template_files do
       File.join('artifacts',"#{File.basename(assembly)}.config"))
   end
 
+  FileUtils.cp(app_config.name_without_template_extension,File.join(
+  Project.startup_dir,Project.startup_config))
+
   config_files.each do |file|
-      FileUtils.cp(file.name_without_template_extension,
-      File.join('artifacts',File.basename(file)))
+      ['artifacts',Project.startup_dir].each do|folder|
+        FileUtils.cp(file.name_without_template_extension,
+        File.join(folder,File.basename(file.name_without_template_extension)))
+      end
   end
 end
 
