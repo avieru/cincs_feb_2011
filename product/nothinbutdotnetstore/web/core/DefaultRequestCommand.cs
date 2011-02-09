@@ -1,13 +1,11 @@
-using System;
-
 namespace nothinbutdotnetstore.web.core
 {
     public class DefaultRequestCommand : RequestCommand
     {
         RequestCriteria request_criteria;
-        readonly ApplicationCommand application_command;
+        ApplicationCommand application_command;
 
-        public DefaultRequestCommand(RequestCriteria request_criteria,ApplicationCommand application_command)
+        public DefaultRequestCommand(RequestCriteria request_criteria, ApplicationCommand application_command)
         {
             this.request_criteria = request_criteria;
             this.application_command = application_command;
