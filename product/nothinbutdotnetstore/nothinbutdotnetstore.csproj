@@ -68,6 +68,8 @@
     <Compile Include="DefaultCalculator.cs" />
     <Compile Include="MessageGenerator.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewMainDepartmentsInTheStore.cs" />
+    <Compile Include="web\application\Repository.cs" />
+    <Compile Include="web\application\ViewRenderer.cs" />
     <Compile Include="web\core\ApplicationCommand .cs" />
     <Compile Include="web\core\BasicHandler.cs" />
     <Compile Include="web\core\CommandRegistry.cs" />
