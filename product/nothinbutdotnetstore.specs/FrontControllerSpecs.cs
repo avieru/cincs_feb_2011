@@ -24,7 +24,6 @@ namespace nothinbutdotnetstore.specs
 
                 command_registry.Stub(x => x.get_the_command_that_can_process(request))
                     .Return(command_that_can_process);
-
             };
 
             Because b = () =>
