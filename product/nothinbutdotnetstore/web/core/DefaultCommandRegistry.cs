@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,7 +14,9 @@ namespace nothinbutdotnetstore.web.core
 
         public RequestCommand get_the_command_that_can_process(Request request)
         {
-            return all_commands.ToList().Find(x => x.can_handle(request));
+            //TODO - If we do this type of thing again, refactor
+            return all_commands.FirstOrDefault(x => x.can_handle(request))
+                ?? new MissingRequestCommand();
         }
     }
 }
