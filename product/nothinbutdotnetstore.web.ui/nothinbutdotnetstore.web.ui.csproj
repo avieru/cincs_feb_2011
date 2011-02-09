@@ -53,6 +53,10 @@
       <DependentUpon>DepartmentBrowser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="views\ProductBrowser.aspx.cs">
+      <DependentUpon>ProductBrowser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="views\Store.master.cs">
       <DependentUpon>Store.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -115,6 +119,7 @@
     <Content Include="scripts\jquery-1.3.2.js" />
     <Content Include="views\Store.master" />
     <None Include="images\Thumbs.db" />
+    <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\nothinbutdotnetstore\nothinbutdotnetstore.csproj">

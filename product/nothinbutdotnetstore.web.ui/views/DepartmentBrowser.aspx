@@ -9,7 +9,7 @@ CodeFile="DepartmentBrowser.aspx.cs"
     <p class="ListHead">Select An Department</p>
             <table>            
               <%--each department should go here--%>
-              <% foreach (var department in ((IEnumerable<Department>)this.Context.Items["blah"]))
+              <% foreach (var department in this.model)
                  {%>
               <tr class="ListItem">
                  <td><a href="#"><%= department.name %></a></td>
