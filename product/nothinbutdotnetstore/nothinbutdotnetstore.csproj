@@ -70,7 +70,7 @@
     <Compile Include="tasks\Departments.cs" />
     <Compile Include="tasks\stubs\StubDepartments.cs" />
     <Compile Include="web\application\catalogbrowsing\Department.cs" />
-    <Compile Include="web\application\catalogbrowsing\ViewDepartmentsInDepartments.cs" />
+    <Compile Include="web\application\catalogbrowsing\ViewDepartmentsInDepartment.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewMainDepartmentsInTheStore.cs" />
     <Compile Include="web\core\ApplicationCommand .cs" />
     <Compile Include="web\core\BasicHandler.cs" />

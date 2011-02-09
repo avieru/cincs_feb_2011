@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using nothinbutdotnetstore.web.application.catalogbrowsing;
@@ -9,12 +8,12 @@ namespace nothinbutdotnetstore.tasks.stubs
     {
         public IEnumerable<Department> get_the_main_departments()
         {
-            return Enumerable.Range(1, 100).Select(x => new Department{name = x.ToString("Main Department 0")});
+            return Enumerable.Range(1, 100).Select(x => new Department {name = x.ToString("Main Department 0")});
         }
 
-        public IEnumerable<Department> get_sub_departments_for(Department department)
+        public IEnumerable<Department> get_departments_in(Department department)
         {
-            throw new NotImplementedException();
+            return Enumerable.Range(1, 100).Select(x => new Department {name = x.ToString("Sub Department 0")});
         }
     }
 }

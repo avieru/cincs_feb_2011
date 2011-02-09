@@ -8,42 +8,46 @@
 
 namespace nothinbutdotnetstore.specs
 {   
-    public class ViewDepartmentsInDepartmentsSpecs
+    public class ViewDepartmentsInDepartmentSpecs
     {
         public abstract class concern : Observes<ApplicationCommand,
-                                            ViewDepartmentsInDepartments>
+                                            ViewDepartmentsInDepartment>
         {
         
         }
 
-        [Subject(typeof(ViewDepartmentsInDepartments))]
+        [Subject(typeof(ViewDepartmentsInDepartment))]
         public class when_run : concern
         {
             Establish c = () =>
             {
-                request = an<ViewDepartmentInDepartmentRequest>();
+                request = an<Request>();
                 renderer = the_dependency<Renderer>();
                 deparments = the_dependency<Departments>();
-                
-                list_of_departments_in_department = new List<Department>();
-                deparments.Stub(x => x.get_sub_departments_for(department));
+                list_of_departments_in_department = new List<Department> {new Department()};
+                parent_department = new Department();
+
+                request.Stub(x => x.map<Department>()).Return(parent_department);
+
+                deparments.Stub(x => x.get_departments_in(parent_department))
+                    .Return(list_of_departments_in_department);
+
             };
 
 
             Because b = () =>
                 sut.run(request);
 
-            It should_ask_request_for_department_info = () =>
-                request.received(x => x.get_department_info());
 
             It should_send_departments_to_renderer = () =>
-                renderer.render(list_of_departments_in_department);
+                renderer.received(x => x.render(list_of_departments_in_department));
+
 
             static Renderer renderer;
             static IEnumerable<Department> list_of_departments_in_department;
-            static ViewDepartmentInDepartmentRequest request;
             static Departments deparments;
-            static Department department;
+            static Department parent_department;
+            static Request request;
         }
     }
 }
