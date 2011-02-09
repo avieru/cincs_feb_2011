@@ -89,6 +89,7 @@
     <Compile Include="utility\ObjectFactory.cs" />
     <Compile Include="ViewDepartmentsInDepartmentSpecs.cs" />
     <Compile Include="ViewMainDepartmentsInTheStoreSpecs.cs" />
+    <Compile Include="ViewProductsInDepartmentSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\nothinbutdotnetstore\nothinbutdotnetstore.csproj">
