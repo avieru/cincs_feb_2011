@@ -1,6 +1,7 @@
-using System;
-using System.Collections.Generic;
+using nothinbutdotnetstore.tasks;
+using nothinbutdotnetstore.tasks.stubs;
 using nothinbutdotnetstore.web.core;
+using nothinbutdotnetstore.web.core.stub;
 
 namespace nothinbutdotnetstore.web.application.catalogbrowsing
 {
@@ -8,6 +9,11 @@ namespace nothinbutdotnetstore.web.application.catalogbrowsing
     {
         Departments departments;
         Renderer renderer;
+
+        public ViewMainDepartmentsInTheStore():this(new StubDepartments(),
+            new StubRenderer())
+        {
+        }
 
         public ViewMainDepartmentsInTheStore(Departments departments, Renderer renderer)
         {

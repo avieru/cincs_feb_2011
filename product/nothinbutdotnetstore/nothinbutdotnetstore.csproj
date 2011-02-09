@@ -67,8 +67,9 @@
     <Compile Include="Calculator.cs" />
     <Compile Include="DefaultCalculator.cs" />
     <Compile Include="MessageGenerator.cs" />
+    <Compile Include="tasks\Departments.cs" />
+    <Compile Include="tasks\stubs\StubDepartments.cs" />
     <Compile Include="web\application\catalogbrowsing\Department.cs" />
-    <Compile Include="web\application\catalogbrowsing\Departments.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewMainDepartmentsInTheStore.cs" />
     <Compile Include="web\core\ApplicationCommand .cs" />
     <Compile Include="web\core\BasicHandler.cs" />
@@ -83,6 +84,9 @@
     <Compile Include="web\core\RequestCommand .cs" />
     <Compile Include="web\core\RequestCriteria.cs" />
     <Compile Include="web\core\RequestFactory.cs" />
+    <Compile Include="web\core\stub\StubRenderer.cs" />
+    <Compile Include="web\core\stub\StubRequestFactory.cs" />
+    <Compile Include="web\core\stub\StubSetOfCommands.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
