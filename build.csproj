@@ -57,6 +57,7 @@
     <None Include="product\config\app.config.erb" />
     <None Include="product\config\hibernate.cfg.xml.erb" />
     <None Include="product\config\log4net.config.xml.erb" />
+    <None Include="product\docs\conventions.markdown" />
     <None Include="product\sql\data\001\001_populate_foo.sql.template" />
     <None Include="product\sql\ddl\001\001_db.sql.template" />
     <None Include="product\sql\ddl\001\002_security.sql.template" />
@@ -82,7 +83,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

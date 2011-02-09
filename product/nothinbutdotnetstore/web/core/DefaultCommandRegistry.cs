@@ -5,7 +5,7 @@ namespace nothinbutdotnetstore.web.core
 {
     public class DefaultCommandRegistry : CommandRegistry
     {
-        readonly IEnumerable<RequestCommand> all_commands;
+        IEnumerable<RequestCommand> all_commands;
 
         public DefaultCommandRegistry(IEnumerable<RequestCommand> all_commands)
         {
