@@ -68,8 +68,7 @@
     <Compile Include="DefaultCalculator.cs" />
     <Compile Include="MessageGenerator.cs" />
     <Compile Include="web\application\catalogbrowsing\Department.cs" />
-    <Compile Include="web\application\catalogbrowsing\DepartmentStore.cs" />
-    <Compile Include="web\application\catalogbrowsing\renderers\Renderer.cs" />
+    <Compile Include="web\application\catalogbrowsing\Departments.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewMainDepartmentsInTheStore.cs" />
     <Compile Include="web\core\ApplicationCommand .cs" />
     <Compile Include="web\core\BasicHandler.cs" />
@@ -79,6 +78,7 @@
     <Compile Include="web\core\DefaultRequestCommand.cs" />
     <Compile Include="web\core\FrontController.cs" />
     <Compile Include="web\core\MissingRequestCommand.cs" />
+    <Compile Include="web\core\Renderer.cs" />
     <Compile Include="web\core\Request.cs" />
     <Compile Include="web\core\RequestCommand .cs" />
     <Compile Include="web\core\RequestCriteria.cs" />
@@ -100,6 +100,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="web\application\catalogbrowsing\renderers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

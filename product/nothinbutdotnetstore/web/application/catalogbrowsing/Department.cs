@@ -1,6 +1,6 @@
 namespace nothinbutdotnetstore.web.application.catalogbrowsing
 {
-    public interface Department
+    public class Department
     {
         
     }
