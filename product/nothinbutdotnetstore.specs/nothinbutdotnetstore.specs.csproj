@@ -87,6 +87,8 @@
     <Compile Include="MessageGeneratorSpecs.cs" />
     <Compile Include="RequestCommandSpecs.cs" />
     <Compile Include="utility\ObjectFactory.cs" />
+    <Compile Include="ViewDepartmentProducts.cs" />
+    <Compile Include="ViewDepartmentProductsSpec.cs" />
     <Compile Include="ViewDepartmentsInDepartmentSpecs.cs" />
     <Compile Include="ViewMainDepartmentsInTheStoreSpecs.cs" />
   </ItemGroup>
