@@ -4,9 +4,16 @@ namespace nothinbutdotnetstore.web.core
 {
     public class DefaultFrontController : FrontController
     {
+        CommandRegistry registery;
+
+        public DefaultFrontController(CommandRegistry registery)
+        {
+            this.registery = registery;
+        }
+
         public void process(Request request)
         {
-            throw new NotImplementedException();
+            this.registery.get_the_command_that_can_process(request).run(request);
         }
     }
 }
