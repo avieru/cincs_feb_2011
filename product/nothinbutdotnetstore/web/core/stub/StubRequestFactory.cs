@@ -6,7 +6,7 @@ namespace nothinbutdotnetstore.web.core.stub
     {
         public Request create_request_from(HttpContext the_current_context)
         {
-            return new StubRequest();
+         
         }
 
         class StubRequest : Request
