@@ -9,7 +9,10 @@ namespace nothinbutdotnetstore.specs
         public abstract class concern : Observes<RequestCommand,
                                             DefaultRequestCommand>
         {
-        
+            Establish c = () =>
+            {
+                provide_a_basic_sut_constructor_argument<RequestCriteria>(x => true);
+            }; 
         }
 
         [Subject(typeof(DefaultRequestCommand))]
@@ -18,7 +21,6 @@ namespace nothinbutdotnetstore.specs
             Establish c = () =>
             {
                 request = an<Request>();
-                provide_a_basic_sut_constructor_argument<RequestCriteria>(x => true);
             };
 
             Because b = () =>
@@ -30,6 +32,26 @@ namespace nothinbutdotnetstore.specs
 
 
             static bool result;
+            static Request request;
+        }
+
+
+        public class when_processing_a_request : concern
+        {
+            Establish c = () =>
+            {
+                request = an<Request>();
+                application_command = the_dependency<ApplicationCommand>();
+
+            };
+            Because b = () =>
+                sut.run(request);
+
+
+            It should_delegate_the_processing_to_the_application_specific_command = () =>
+                application_command.received(x => x.run(request));
+
+            static ApplicationCommand application_command;
             static Request request;
         }
     }

@@ -18,7 +18,7 @@ namespace nothinbutdotnetstore.web.core
 
         public bool can_handle(Request request)
         {
-            return request_criteria.Invoke(request);
+            return request_criteria(request);
         }
     }
 }
