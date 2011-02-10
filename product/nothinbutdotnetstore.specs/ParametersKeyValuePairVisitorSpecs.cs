@@ -61,5 +61,26 @@ namespace nothinbutdotnetstore.specs
             static KeyValuePair<string, object> first_token;
             static KeyValuePair<string, object> second_token;
         }
+
+        public class when_asked_for_the_querystring: concern
+        {
+            Establish c = () =>
+            {
+                first_token = new KeyValuePair<string, object>("arg1", "val1");
+                second_token = new KeyValuePair<string, object>("arg2", "val2");
+                parameters.Add(first_token);
+                parameters.Add(second_token);
+            };
+
+            Because b = () =>
+                result = sut.downcast_to<ParametersKeyValuePairVisitor>().get_query_string();
+
+            It should_return_a_valid_querystring_string = () =>
+                result.ShouldEqual("arg1=val1&arg2=val2");
+
+            static string result;
+            static KeyValuePair<string, object> first_token;
+            static KeyValuePair<string, object> second_token;
+        }
     }
 }
