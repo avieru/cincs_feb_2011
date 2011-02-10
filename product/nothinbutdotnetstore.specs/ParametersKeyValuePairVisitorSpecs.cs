@@ -49,7 +49,7 @@ namespace nothinbutdotnetstore.specs
             };
 
             Because b = () =>
-                result = sut.downcast_to<ParametersKeyValuePairVisitor>().get_query_string();
+                result = sut.downcast_to<ParametersKeyValuePairVisitor>().get_result();
 
             It should_return_a_valid_querystring_string = () =>
                 result.ShouldEqual("arg1=val1&arg2=val2");

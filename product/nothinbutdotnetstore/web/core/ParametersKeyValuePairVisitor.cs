@@ -4,7 +4,7 @@ using nothinbutdotnetstore.core;
 
 namespace nothinbutdotnetstore.web.core
 {
-    public class ParametersKeyValuePairVisitor : Visitor<KeyValuePair<string, object>>
+    public class ParametersKeyValuePairVisitor : ValueReturningVisitior<KeyValuePair<string, object>,string>
     {
         IList<KeyValuePair<string, object>> parameters;
 
@@ -18,8 +18,9 @@ namespace nothinbutdotnetstore.web.core
             parameters.Add(item);
         }
 
-        public string get_query_string()
+        public string get_result()
         {
+
             //TODO - Will deal with this later
             var builder = new StringBuilder();
             new List<KeyValuePair<string, object>>(parameters).ForEach(

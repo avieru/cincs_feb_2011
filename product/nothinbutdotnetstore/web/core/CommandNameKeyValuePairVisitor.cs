@@ -3,7 +3,7 @@ using nothinbutdotnetstore.core;
 
 namespace nothinbutdotnetstore.web.core
 {
-    public class CommandNameKeyValuePairVisitor : Visitor<KeyValuePair<string, object>>
+    public class CommandNameKeyValuePairVisitor : ValueReturningVisitior<KeyValuePair<string, object>,string>
     {
         public string command_name { private set; get; }
 
@@ -17,7 +17,7 @@ namespace nothinbutdotnetstore.web.core
             command_name = token.Value.ToString();
         }
 
-        public string get_url()
+        public string get_result()
         {
             return string.Format("{0}.cinc?", command_name);
         }

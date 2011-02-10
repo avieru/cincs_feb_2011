@@ -42,7 +42,7 @@ namespace nothinbutdotnetstore.specs
                 //setup
                 sut.process(new KeyValuePair<string, object>("ignored", command_name));
 
-                result = sut.downcast_to<ParametersKeyValuePairVisitor>().get_query_string();
+                result = sut.downcast_to<ParametersKeyValuePairVisitor>().get_result();
             };
 
             It should_return_the_name_of_the_command_suffixed_with_the_handler_token = () =>

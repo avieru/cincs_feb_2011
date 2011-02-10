@@ -66,7 +66,11 @@
   <ItemGroup>
     <Compile Include="Calculator.cs" />
     <Compile Include="core\ChainedVisitor.cs" />
+    <Compile Include="core\ConditionalVisitor.cs" />
+    <Compile Include="core\Criteria.cs" />
     <Compile Include="core\EnumerableExtensions.cs" />
+    <Compile Include="core\IsFirstItem.cs" />
+    <Compile Include="core\ValueReturningVisitior.cs" />
     <Compile Include="core\Visitor.cs" />
     <Compile Include="DefaultCalculator.cs" />
     <Compile Include="MessageGenerator.cs" />
