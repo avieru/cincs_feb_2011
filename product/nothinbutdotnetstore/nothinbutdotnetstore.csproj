@@ -88,6 +88,7 @@
     <Compile Include="web\core\FormPathRegistry.cs" />
     <Compile Include="web\core\FormTransfer.cs" />
     <Compile Include="web\core\PageFactory.cs" />
+    <Compile Include="web\core\ParametersKeyValuePairVisitor.cs" />
     <Compile Include="web\core\stub\StubFormPathRegistry.cs" />
     <Compile Include="web\core\UniqueTokenValueStore.cs" />
     <Compile Include="web\core\UrlBuilder.cs" />
