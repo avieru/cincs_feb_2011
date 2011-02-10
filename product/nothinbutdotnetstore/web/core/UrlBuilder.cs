@@ -1,4 +1,3 @@
-using System.Collections.Specialized;
 using System.Linq.Expressions;
 
 namespace nothinbutdotnetstore.web.core
@@ -7,18 +6,23 @@ namespace nothinbutdotnetstore.web.core
 
     public class UrlBuilder<CommandToRun, Model> where CommandToRun : ApplicationCommand
     {
-        readonly Model model;
-        readonly NameValueCollection payload;
+        Model model;
+        UniqueTokenValueStore payload;
+        ExpressionToPropertyNameMapper expression_to_property_name_mapper;
 
-        public UrlBuilder(Model model, NameValueCollection payload)
+        public UrlBuilder(Model model, UniqueTokenValueStore payload, ExpressionToPropertyNameMapper expression_to_property_name_mapper)
         {
             this.model = model;
+            this.expression_to_property_name_mapper = expression_to_property_name_mapper;
             this.payload = payload;
         }
 
-        public void with<PropertyType>(Expression<PropertyAccessor<Model, PropertyType>> accessor)
+        public UrlBuilder<CommandToRun, Model> with<PropertyType>(Expression<PropertyAccessor<Model, PropertyType>> accessor)
         {
-            payload.Add(((MemberExpression) accessor.Body).Member.Name, accessor.Compile()(model).ToString());
+            payload.store_token_value(expression_to_property_name_mapper.map(accessor),
+                                      accessor.Compile()(model));
+
+            return this;
         }
     }
 }
