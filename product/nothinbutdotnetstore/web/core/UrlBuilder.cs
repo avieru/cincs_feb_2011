@@ -24,5 +24,10 @@ namespace nothinbutdotnetstore.web.core
 
             return this;
         }
+
+        public override string ToString()
+        {
+            return payload.UnrollAsString();
+        }
     }
 }

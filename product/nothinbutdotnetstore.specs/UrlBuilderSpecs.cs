@@ -51,6 +51,30 @@ namespace nothinbutdotnetstore.specs
             static UrlBuilder<OurCommand,TheModel> result;
         }
 
+
+        [Subject(typeof(UrlBuilder<,>))]
+        public class when_asked_to_render_itself_as_string : concern
+        {
+            Establish c = () =>
+            {
+                the_model.id = 1;
+                the_model.name="something";
+                payload.Stub(x => x.UnrollAsString()).Return(string.Empty);
+            };
+
+            Because b = () =>
+                result = sut.ToString();
+
+            It should_be_apparent_that_payload_unload_was_called = () =>
+                payload.received(x => x.UnrollAsString());
+
+            It should_look_right_like_below = () =>
+                result.ShouldBeAn<string>();
+
+             static string result;
+        }
+
+
         public class OurCommand : ApplicationCommand
         {
             public void run(Request request)
@@ -61,6 +85,7 @@ namespace nothinbutdotnetstore.specs
 
         public class TheModel
         {
+            public string name;
             public int id { get; set; }
         }
     }
