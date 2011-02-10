@@ -90,6 +90,7 @@
     <Compile Include="web\core\CommandRegistry.cs" />
     <Compile Include="web\core\DefaultCommandRegistry.cs" />
     <Compile Include="web\core\DefaultFrontController.cs" />
+    <Compile Include="web\core\DefaultUniqueTokenValueStore.cs" />
     <Compile Include="web\core\ExpressionToPropertyNameMapper.cs" />
     <Compile Include="web\core\FormPathRegistry.cs" />
     <Compile Include="web\core\FormTransfer.cs" />
