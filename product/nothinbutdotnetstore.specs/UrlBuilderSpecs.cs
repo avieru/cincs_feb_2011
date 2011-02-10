@@ -93,5 +93,27 @@ namespace nothinbutdotnetstore.specs
             public string name;
             public int id { get; set; }
         }
+
+
+        [Subject(typeof(UrlBuilder<,>))]
+        public class when_tostring_method_is_called : concern
+        {
+            Establish c = () =>
+            {
+                TheModel model = new TheModel();
+                model.name = "val1";
+                create_sut_using(new UrlBuilderFactory<OurCommand>(new DefaultExpressionToPropertyNameMapper()).For(TheModel).with(model.name));
+            };
+
+            Because b = () =>
+            {
+                result = sut.ToString();
+            };
+
+            It should_return_a_valid_http_url_string = () =>
+                result.ShouldEqual("OurCommand.cinc?name=val1");
+
+            static string result;
+        }
     }
 }
