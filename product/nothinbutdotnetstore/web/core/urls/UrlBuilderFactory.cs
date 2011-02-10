@@ -1,4 +1,5 @@
-﻿using nothinbutdotnetstore.core;
+﻿using System;
+using nothinbutdotnetstore.core;
 
 namespace nothinbutdotnetstore.web.core.urls
 {
@@ -6,18 +7,20 @@ namespace nothinbutdotnetstore.web.core.urls
     {
         ExpressionToPropertyNameMapper expression_to_property_name_mapper;
         TokenStoreFactory token_store_factory;
+        UrlEncoderFactory url_encoder_factory;
 
-        public UrlBuilderFactory(ExpressionToPropertyNameMapper expression_to_property_name_mapper, TokenStoreFactory token_store_factory)
+        public UrlBuilderFactory(ExpressionToPropertyNameMapper expression_to_property_name_mapper, TokenStoreFactory token_store_factory, UrlEncoderFactory url_encoder_factory)
         {
             this.expression_to_property_name_mapper = expression_to_property_name_mapper;
             this.token_store_factory = token_store_factory;
+            this.url_encoder_factory = url_encoder_factory;
         }
 
         public UrlBuilder<CommandToBuildUrlsTo, ReportModel> For<ReportModel>(ReportModel the_model)
         {
             return new UrlBuilder<CommandToBuildUrlsTo, ReportModel>(the_model,
                                                         token_store_factory(),
-                                                        expression_to_property_name_mapper);
+                                                        expression_to_property_name_mapper,url_encoder_factory());
         }
     }
 }
