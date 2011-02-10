@@ -6,8 +6,10 @@ namespace nothinbutdotnetstore.web.core
 {
     public class UrlEncodingKeyValuePairVisitor
     {
-        public string command_name { private set; get; }
+        public StringBuilder string_builder;
 
+        public UrlEncodingKeyValuePairVisitor(StringBuil)
+        public string command_name { private set; get; }
 
         public void process(KeyValuePair<string, object> first_token)
         {
