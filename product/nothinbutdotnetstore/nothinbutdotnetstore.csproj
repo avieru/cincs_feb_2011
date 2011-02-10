@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Calculator.cs" />
     <Compile Include="core\ChainedVisitor.cs" />
+    <Compile Include="core\EnumerableExtensions.cs" />
     <Compile Include="core\Visitor.cs" />
     <Compile Include="DefaultCalculator.cs" />
     <Compile Include="MessageGenerator.cs" />

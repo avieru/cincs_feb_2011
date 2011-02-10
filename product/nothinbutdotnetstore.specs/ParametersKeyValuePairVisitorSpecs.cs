@@ -22,56 +22,20 @@ namespace nothinbutdotnetstore.specs
         }
 
         [Subject(typeof(ParametersKeyValuePairVisitor))]
-        public class when_processing_the_first_keypair : concern
-        {
-            Establish c = () => { ignored_token = new KeyValuePair<string, object>("command_name", "sdfsdfsdfsdfsd"); };
-
-            Because b = () =>
-                sut.process(ignored_token);
-
-            It should_ignore_it = () =>
-                parameters.Count.ShouldEqual(0);
-
-            static KeyValuePair<string, object> ignored_token;
-        }
-
-        public class when_adding_multiple_tokens_and_no_prior_state_exists : concern
+        public class when_processing_an_item : concern
         {
             Establish c = () =>
             {
-                first_token = new KeyValuePair<string, object>("command_name", "sdfsdf");
-                second_token = new KeyValuePair<string, object>("arg1", "duh");
+                a_token = new KeyValuePair<string, object>("command_name", "sdfsdfsdfsdfsd");
             };
 
             Because b = () =>
-            {
-                sut.process(first_token);
-                sut.process(second_token);
-            };
+                sut.process(a_token);
 
-            It should_store_items_in_the_parameters = () =>
+            It should_add_it_to_the_list_of_parameters = () =>
                 parameters.Count.ShouldEqual(1);
 
-            static KeyValuePair<string, object> first_token;
-            static KeyValuePair<string, object> second_token;
-        }
-
-        public class when_processing_subsequent_keypairs : concern
-        {
-            Establish c = () =>
-            {
-                first_token = new KeyValuePair<string, object>("command_name", "sdfsdf");
-                second_token = new KeyValuePair<string, object>("arg1", "duh");
-                parameters.Add(first_token);
-            };
-
-            Because b = () => { sut.process(second_token); };
-
-            It should_store_the_key_pairs_for_later_processing = () =>
-                parameters.Count.ShouldEqual(2);
-
-            static KeyValuePair<string, object> first_token;
-            static KeyValuePair<string, object> second_token;
+            static KeyValuePair<string, object> a_token;
         }
 
         public class when_asked_for_the_querystring : concern
