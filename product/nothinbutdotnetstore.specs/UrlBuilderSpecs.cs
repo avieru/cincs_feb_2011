@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using Machine.Specifications;
 using Machine.Specifications.DevelopWithPassion.Rhino;
@@ -24,6 +25,34 @@ namespace nothinbutdotnetstore.specs
             protected static TheModel the_model;
         }
 
+        public class when_created : concern
+        {
+            It should_add_the_name_of_the_command_to_the_token_value_store = () =>
+                payload.received(x => x.store_token_value(UrlBuilder<OurCommand,TheModel>.command_key, typeof(OurCommand).Name));
+
+            static string the_tokenized_property_name;
+            static UrlBuilder<OurCommand, TheModel> result;
+        }
+
+        public class when_providing_an_iterator_to_the_token_members : concern
+        {
+            Establish c = () =>
+            {
+                the_first_token = new KeyValuePair<string, object>();
+                items = new List<KeyValuePair<string, object>> {the_first_token};
+                payload.Stub(x => x.GetEnumerator()).Return (items.GetEnumerator());
+            };
+
+            Because b = () =>
+                result = sut;
+
+            It should_return_the_iterator_of_the_unique_token_store = () =>
+                result.ShouldContain(the_first_token);
+
+            static IEnumerable<KeyValuePair<string,object>> result;
+            static KeyValuePair<string, object> the_first_token;
+            static IList<KeyValuePair<string,object>> items;
+        }
         [Subject(typeof(UrlBuilder<,>))]
         public class when_provided_a_property_to_include_in_the_payload : concern
         {
