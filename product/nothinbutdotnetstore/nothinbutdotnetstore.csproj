@@ -97,6 +97,8 @@
     <Compile Include="web\core\DefaultFrontController.cs" />
     <Compile Include="web\core\FormPathRegistry.cs" />
     <Compile Include="web\core\FormTransfer.cs" />
+    <Compile Include="web\core\UrlEncode.cs" />
+    <Compile Include="web\core\UrlEncodingVisitor.cs" />
     <Compile Include="web\core\PageFactory.cs" />
     <Compile Include="web\core\stub\StubEncoderFactory.cs" />
     <Compile Include="web\core\UrlEncoder.cs" />

@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using System.Web;
 using nothinbutdotnetstore.core;
 using nothinbutdotnetstore.web.core.urls;
 
@@ -12,7 +12,7 @@ namespace nothinbutdotnetstore.web.core.stub
             return new MixedEncoder();
         }
 
-        private class IsNotFirst : Criteria<KeyValuePair<string, object>>
+        class IsNotFirst : Criteria<KeyValuePair<string, object>>
         {
             int number_processed;
 
@@ -22,21 +22,24 @@ namespace nothinbutdotnetstore.web.core.stub
             }
         }
 
-        private class MixedEncoder : UrlEncoder
+        class MixedEncoder : UrlEncoder
         {
             ChainedVisitor<KeyValuePair<string, object>> composite_encoder;
-            CommandNameKeyValuePairVisitor name_encoder;
-            ParametersKeyValuePairVisitor params_encoder;
+            UrlEncoder name_encoder;
+            UrlEncoder params_encoder;
 
             public MixedEncoder()
             {
-                this.name_encoder = new CommandNameKeyValuePairVisitor();
-                this.params_encoder = new ParametersKeyValuePairVisitor(new List<KeyValuePair<string, object>>());
-                composite_encoder = new ChainedVisitor<KeyValuePair<string,object>>(
-                    new ConditionalVisitor<KeyValuePair<string,object>>(name_encoder,
-                        new IsFirstItem<KeyValuePair<string,object>>()), 
-                        new ConditionalVisitor<KeyValuePair<string,object>>(params_encoder,
-                            new IsNotFirst()));
+                this.name_encoder = new UrlEncodingVisitor(new CommandNameKeyValuePairVisitor(), HttpUtility.UrlEncode);
+                this.params_encoder =
+                    new UrlEncodingVisitor(new ParametersKeyValuePairVisitor(new List<KeyValuePair<string, object>>()),
+                                    HttpUtility.UrlEncode);
+
+                composite_encoder = new ChainedVisitor<KeyValuePair<string, object>>(
+                    new ConditionalVisitor<KeyValuePair<string, object>>(name_encoder,
+                                                                         new IsFirstItem<KeyValuePair<string, object>>()),
+                    new ConditionalVisitor<KeyValuePair<string, object>>(params_encoder,
+                                                                         new IsNotFirst()));
             }
 
             public void process(KeyValuePair<string, object> item)
