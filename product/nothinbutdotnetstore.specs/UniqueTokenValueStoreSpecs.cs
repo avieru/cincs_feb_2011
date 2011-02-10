@@ -1,6 +1,7 @@
  using System.Collections.Generic;
  using Machine.Specifications;
  using Machine.Specifications.DevelopWithPassion.Rhino;
+ using nothinbutdotnetstore.core;
  using nothinbutdotnetstore.web.core;
  using Machine.Specifications.DevelopWithPassion.Extensions;
  using System.Linq;

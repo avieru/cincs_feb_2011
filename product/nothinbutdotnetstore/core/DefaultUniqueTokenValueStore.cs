@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace nothinbutdotnetstore.web.core
+namespace nothinbutdotnetstore.core
 {
     public class DefaultUniqueTokenValueStore : UniqueTokenValueStore
     {
@@ -24,11 +23,6 @@ namespace nothinbutdotnetstore.web.core
         bool token_exists_for(string token_key)
         {
             return tokens.ContainsKey(token_key);
-        }
-
-        public bool is_already_in_the_store(string token_key)
-        {
-            throw new NotImplementedException();
         }
 
         IEnumerator IEnumerable.GetEnumerator()

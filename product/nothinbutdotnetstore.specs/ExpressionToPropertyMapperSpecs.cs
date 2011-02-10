@@ -1,7 +1,6 @@
-using System.Linq.Expressions;
- using Machine.Specifications;
- using Machine.Specifications.DevelopWithPassion.Extensions;
- using Machine.Specifications.DevelopWithPassion.Rhino;
+using Machine.Specifications;
+using Machine.Specifications.DevelopWithPassion.Rhino;
+using nothinbutdotnetstore.core;
 using nothinbutdotnetstore.web.core;
 
 namespace nothinbutdotnetstore.specs
@@ -31,28 +30,5 @@ namespace nothinbutdotnetstore.specs
     class TheirModel
     {
         public string Name { get; set; }
-    }
-
-    public class DefaultExpressionToPropertyNameMapper : ExpressionToPropertyNameMapper
-    {
-        public string map<TheModel, PropertyType>(Expression<PropertyAccessor<TheModel, PropertyType>> accessor)
-        {
-            return new ExpressionPropertyToStringConverter<TheModel,PropertyType>(accessor).ToString();// ExpressionUtility.name_of_property_on<TheModel, PropertyType>(accessor);
-        }
-    }
-
-    public class ExpressionPropertyToStringConverter<TheModel, PropertyType>
-    {
-        string property_name_as_string;
-
-        public ExpressionPropertyToStringConverter(Expression<PropertyAccessor<TheModel, PropertyType>> accessor)
-        {
-            property_name_as_string = accessor.Body.downcast_to<MemberExpression>().Member.Name;
-        }
-
-        public override string ToString()
-        {
-            return property_name_as_string;
-        }
     }
 }
