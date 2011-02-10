@@ -1,51 +1,49 @@
- using System;
- using Machine.Specifications;
- using Machine.Specifications.DevelopWithPassion.Rhino;
- using nothinbutdotnetstore.web.core;
+using System;
+using System.Collections.Specialized;
+using Machine.Specifications;
+using Machine.Specifications.DevelopWithPassion.Rhino;
+using nothinbutdotnetstore.web.core;
 
 namespace nothinbutdotnetstore.specs
-{   
+{
     public class UrlBuilderSpecs
     {
-        public abstract class concern : Observes<UrlBuilder<TCommand>>
+        public abstract class concern : Observes<UrlBuilder<OurCommand, TheModel>>
         {
-        
         }
 
-        [Subject(typeof(UrlBuilder<TCommand>))]
-        public class when_calling_the_with : concern
+        [Subject(typeof(UrlBuilder<,>))]
+        public class when_provided_a_property_to_include_in_the_payload : concern
         {
             Establish c = () =>
             {
-                property_delegate = PropertyAccessor<>
+                the_model = new TheModel();
+                payload = new NameValueCollection();
+                provide_a_basic_sut_constructor_argument(the_model);
+                provide_a_basic_sut_constructor_argument(payload);
             };
 
             Because b = () =>
-            {
-                sut.with<OurModel>(x => x.id);
-            };
+                sut.with(x => x.id);
 
+            It should_add_the_value_of_the_property_to_the_payload_collection = () =>
+                payload["id"].ShouldEqual(the_model.id.ToString());
 
-            It should_return_a_url = () =>
-            {
-                
-            };
+            static NameValueCollection payload;
+            static TheModel the_model;
         }
-    }
 
-    public delegate PropertyType PropertyAccessor<ReportModel, PropertyType>(ReportModel item);
-
-    public class OurModel
-    {
-        public string id { get; set; }
-
-    }
-
-    public class UrlBuilder<TCommand> where TCommand: ApplicationCommand
-    {
-        public void with<ReportModel>()
+        public class OurCommand : ApplicationCommand
         {
-            throw new NotImplementedException();
+            public void run(Request request)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public class TheModel
+        {
+            public int id { get; set; }
         }
     }
 }

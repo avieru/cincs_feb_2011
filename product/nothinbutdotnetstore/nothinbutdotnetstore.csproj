@@ -87,6 +87,7 @@
     <Compile Include="web\core\FormTransfer.cs" />
     <Compile Include="web\core\PageFactory.cs" />
     <Compile Include="web\core\stub\StubFormPathRegistry.cs" />
+    <Compile Include="web\core\UrlBuilder.cs" />
     <Compile Include="web\core\ViewFactory.cs" />
     <Compile Include="web\core\ViewFor.cs" />
     <Compile Include="web\core\WebFormRenderer.cs" />
