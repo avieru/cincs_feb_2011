@@ -3,7 +3,6 @@ using Machine.Specifications;
 using Machine.Specifications.DevelopWithPassion.Extensions;
 using Machine.Specifications.DevelopWithPassion.Rhino;
 using nothinbutdotnetstore.core;
-using nothinbutdotnetstore.web.core;
 using nothinbutdotnetstore.web.core.urls;
 
 namespace nothinbutdotnetstore.specs
@@ -40,14 +39,13 @@ namespace nothinbutdotnetstore.specs
 
             Because b = () =>
             {
-                //setup
                 sut.process(new KeyValuePair<string, object>("ignored", command_name));
 
-                result = sut.downcast_to<ParametersKeyValuePairVisitor>().get_result();
+                result = sut.downcast_to<CommandNameKeyValuePairVisitor>().get_result();
             };
 
             It should_return_the_name_of_the_command_suffixed_with_the_handler_token = () =>
-                result.ShouldBeEqualIgnoringCase("{0}.cinc?".format_using(command_name));
+                result.ShouldBeEqualIgnoringCase(CommandNameKeyValuePairVisitor.format_string.format_using(command_name));
 
             static string result;
             static string command_name;
