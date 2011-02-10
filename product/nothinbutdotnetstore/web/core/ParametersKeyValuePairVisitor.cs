@@ -7,6 +7,7 @@ namespace nothinbutdotnetstore.web.core
     public class ParametersKeyValuePairVisitor : Visitor<KeyValuePair<string, object>>
     {
         IList<KeyValuePair<string, object>> parameters;
+        bool first_item = true;
 
         public ParametersKeyValuePairVisitor(IList<KeyValuePair<string, object>> parameters)
         {
@@ -15,14 +16,13 @@ namespace nothinbutdotnetstore.web.core
 
         public void process(KeyValuePair<string, object> item)
         {
-            if (first_item()) return;
+            if (first_item)
+            {
+                first_item = false;
+                return;
+            }
 
             parameters.Add(item);
-        }
-
-        bool first_item()
-        {
-            return parameters.Count == 0;
         }
 
         public string get_query_string()
