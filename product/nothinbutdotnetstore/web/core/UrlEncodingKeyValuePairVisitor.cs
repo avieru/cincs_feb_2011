@@ -13,5 +13,10 @@ namespace nothinbutdotnetstore.web.core
         {
             command_name = first_token.Value.ToString();
         }
+
+        public string get_url()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
