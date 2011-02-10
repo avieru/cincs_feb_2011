@@ -11,7 +11,13 @@ namespace nothinbutdotnetstore.specs
     {
         public abstract class concern : Observes<UrlEncodingKeyValuePairVisitor>
         {
-        
+            Establish c = () =>
+            {
+                builder = new StringBuilder();
+                provide_a_basic_sut_constructor_argument(builder);
+            };
+
+            protected static StringBuilder builder;
         }
 
         [Subject(typeof(UrlEncodingKeyValuePairVisitor))]
@@ -21,20 +27,36 @@ namespace nothinbutdotnetstore.specs
             Establish c = () =>
             {
                 command_name = "our_command";
-                builder = new StringBuilder();
                 first_token = new KeyValuePair<string, object>("command_name",command_name);
-                provide_a_basic_sut_constructor_argument(builder);
             };
 
             Because b = () =>
                 sut.process(first_token);
 
             It should_append_the_name_of_the_command_to_the_builder_with_the_appropriate_handler_suffix = () =>
-                builder.ToString().ShouldBeEqualIgnoringCase("{0}.cinc".format_using(command_name));
+                sut.command_name.ShouldEqual(command_name);
 
-            static StringBuilder builder;
+
             static KeyValuePair<string,object> first_token;
             static string command_name;
+        }
+        public class when_processing_subsequent_items : concern
+        {
+            Establish c = () =>
+            {
+                new_key_pair = new KeyValuePair<string, object>("somekey",23);
+                add_pipeline_behaviour_against_sut(x => x.process(new KeyValuePair<string, object>("sdf",243)));
+            };
+
+            Because b = () =>
+            {
+                sut.process(new_key_pair);
+            };
+
+            It should_append_the_key_value_pair_to_the_string_builder = () =>
+                builder.ToString().ShouldEqual("&{0}={1}".format_using(new_key_pair.Key, new_key_pair.Value.ToString()));
+
+            static KeyValuePair<string,object > new_key_pair;
         }
     }
 
