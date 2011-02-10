@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="BasicHandlerSpecs.cs" />
     <Compile Include="ChainedVisitorSpecs.cs" />
+    <Compile Include="CommandUrlSpecs.cs" />
     <Compile Include="CommandRegistrySpecs.cs" />
     <Compile Include="ConditionalVisitorSpecs.cs" />
     <Compile Include="EnumerableVisitorAttachment.cs" />

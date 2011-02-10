@@ -3,7 +3,7 @@ using Machine.Specifications;
 using Machine.Specifications.DevelopWithPassion.Extensions;
 using Machine.Specifications.DevelopWithPassion.Rhino;
 using nothinbutdotnetstore.core;
-using nothinbutdotnetstore.web.core;
+using nothinbutdotnetstore.web.core.urls;
 
 namespace nothinbutdotnetstore.specs
 {
@@ -24,10 +24,7 @@ namespace nothinbutdotnetstore.specs
         [Subject(typeof(ParametersKeyValuePairVisitor))]
         public class when_processing_an_item : concern
         {
-            Establish c = () =>
-            {
-                a_token = new KeyValuePair<string, object>("command_name", "sdfsdfsdfsdfsd");
-            };
+            Establish c = () => { a_token = new KeyValuePair<string, object>("command_name", "sdfsdfsdfsdfsd"); };
 
             Because b = () =>
                 sut.process(a_token);

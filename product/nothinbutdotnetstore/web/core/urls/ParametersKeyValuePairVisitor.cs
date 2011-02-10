@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Text;
 using nothinbutdotnetstore.core;
 
-namespace nothinbutdotnetstore.web.core
+namespace nothinbutdotnetstore.web.core.urls
 {
     public class ParametersKeyValuePairVisitor : ValueReturningVisitior<KeyValuePair<string, object>,string>
     {

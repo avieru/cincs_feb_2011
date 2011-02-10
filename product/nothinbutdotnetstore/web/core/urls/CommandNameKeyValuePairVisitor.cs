@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using nothinbutdotnetstore.core;
 
-namespace nothinbutdotnetstore.web.core
+namespace nothinbutdotnetstore.web.core.urls
 {
     public class CommandNameKeyValuePairVisitor : ValueReturningVisitior<KeyValuePair<string, object>,string>
     {

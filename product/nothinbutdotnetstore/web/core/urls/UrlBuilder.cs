@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using nothinbutdotnetstore.core;
 
-namespace nothinbutdotnetstore.web.core
+namespace nothinbutdotnetstore.web.core.urls
 {
     public class UrlBuilder<CommandToRun, Model> : IEnumerable<KeyValuePair<string, object>>
         where CommandToRun : ApplicationCommand
     {
-        Model model;
-        UniqueTokenValueStore payload;
-        ExpressionToPropertyNameMapper expression_to_property_name_mapper;
+        public Model model;
+        public UniqueTokenValueStore payload;
+        public ExpressionToPropertyNameMapper expression_to_property_name_mapper;
         public const string command_key = "command_name";
 
         public UrlBuilder(Model model, UniqueTokenValueStore payload,
