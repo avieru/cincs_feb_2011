@@ -44,10 +44,13 @@ namespace nothinbutdotnetstore.specs
             Establish c = () =>
             {
                 new_key_pair = new KeyValuePair<string, object>("somekey", 23);
-                add_pipeline_behaviour_against_sut(x => x.process(new KeyValuePair<string, object>("sdf", 243)));
             };
 
-            Because b = () => { sut.process(new_key_pair); };
+            Because b = () =>
+            {
+                sut.process(new KeyValuePair<string, object>("ignore","blah"));
+                sut.process(new_key_pair);
+            };
 
             It should_append_the_key_value_pair_to_the_string_builder = () =>
                 builder.ToString().ShouldEqual("&{0}={1}".format_using(new_key_pair.Key, new_key_pair.Value.ToString()));
@@ -60,16 +63,19 @@ namespace nothinbutdotnetstore.specs
             Establish c = () =>
             {
                 command_name = "Command";
-                add_pipeline_behaviour_against_sut(
-                    x => x.process(new KeyValuePair<string, object>("ignored", command_name)));
             };
 
-            Because b = () => { result = sut.get_url(); };
+            Because b = () =>
+            {
+                //setup
+                sut.process(new KeyValuePair<string, object>("ignored",command_name));
+
+                result = sut.get_url();
+            };
 
             It should_return_the_name_of_the_command_suffixed_with_the_handler_token = () =>
                 result.ShouldBeEqualIgnoringCase("{0}.cinc".format_using(command_name));
 
-            static KeyValuePair<string, object> new_key_pair;
             static string result;
             static string command_name;
         }
