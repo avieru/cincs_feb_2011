@@ -45,35 +45,10 @@ namespace nothinbutdotnetstore.specs
 
             It should_return_the_builder_to_continue_payload_chaining = () =>
                 result.ShouldEqual(sut);
-  
 
             static string the_tokenized_property_name;
-            static UrlBuilder<OurCommand,TheModel> result;
+            static UrlBuilder<OurCommand, TheModel> result;
         }
-
-
-        [Subject(typeof(UrlBuilder<,>))]
-        public class when_asked_to_render_itself_as_string : concern
-        {
-            Establish c = () =>
-            {
-                the_model.id = 1;
-                the_model.name="something";
-                payload.Stub(x => x.UnrollAsString()).Return(string.Empty);
-            };
-
-            Because b = () =>
-                result = sut.ToString();
-
-            It should_be_apparent_that_payload_unload_was_called = () =>
-                payload.received(x => x.UnrollAsString());
-
-            It should_look_right_like_below = () =>
-                result.ShouldBeAn<string>();
-
-             static string result;
-        }
-
 
         public class OurCommand : ApplicationCommand
         {
