@@ -89,7 +89,7 @@
     <Compile Include="MessageGeneratorSpecs.cs" />
     <Compile Include="RendererSpecs.cs" />
     <Compile Include="RequestCommandSpecs.cs" />
-    <Compile Include="UrlEncodingKeyValuePairVisitorSpecs.cs" />
+    <Compile Include="CommandNameKeyValuePairVisitorSpecs.cs" />
     <Compile Include="utility\ObjectFactory.cs" />
     <Compile Include="ViewDepartmentProductsSpec.cs" />
     <Compile Include="ViewDepartmentsInDepartmentSpecs.cs" />

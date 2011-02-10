@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculator.cs" />
+    <Compile Include="core\Visitor.cs" />
     <Compile Include="DefaultCalculator.cs" />
     <Compile Include="MessageGenerator.cs" />
     <Compile Include="tasks\Catalog.cs" />
@@ -90,7 +91,7 @@
     <Compile Include="web\core\stub\StubFormPathRegistry.cs" />
     <Compile Include="web\core\UniqueTokenValueStore.cs" />
     <Compile Include="web\core\UrlBuilder.cs" />
-    <Compile Include="web\core\UrlEncodingKeyValuePairVisitor.cs" />
+    <Compile Include="web\core\CommandNameKeyValuePairVisitor.cs" />
     <Compile Include="web\core\ViewFactory.cs" />
     <Compile Include="web\core\ViewFor.cs" />
     <Compile Include="web\core\WebFormRenderer.cs" />
