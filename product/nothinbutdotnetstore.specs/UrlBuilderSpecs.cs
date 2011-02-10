@@ -11,6 +11,17 @@ namespace nothinbutdotnetstore.specs
     {
         public abstract class concern : Observes<UrlBuilder<OurCommand, TheModel>>
         {
+            Establish c = () =>
+            {
+                the_model = new TheModel();
+                payload = the_dependency<UniqueTokenValueStore>();
+                expression_to_property_name_mapper = the_dependency<ExpressionToPropertyNameMapper>();
+                provide_a_basic_sut_constructor_argument(the_model);
+            };
+
+            public static UniqueTokenValueStore payload;
+            protected static ExpressionToPropertyNameMapper expression_to_property_name_mapper;
+            protected static TheModel the_model;
         }
 
         [Subject(typeof(UrlBuilder<,>))]
@@ -18,12 +29,7 @@ namespace nothinbutdotnetstore.specs
         {
             Establish c = () =>
             {
-                the_model = new TheModel();
                 the_model.id = 23;
-                payload = the_dependency<UniqueTokenValueStore>();
-                expression_to_property_name_mapper = the_dependency<ExpressionToPropertyNameMapper>();
-                provide_a_basic_sut_constructor_argument(the_model);
-
                 the_tokenized_property_name = "sdfsdfsdf";
 
                 expression_to_property_name_mapper.Stub(
@@ -41,9 +47,6 @@ namespace nothinbutdotnetstore.specs
                 result.ShouldEqual(sut);
   
 
-            static UniqueTokenValueStore payload;
-            static TheModel the_model;
-            static ExpressionToPropertyNameMapper expression_to_property_name_mapper;
             static string the_tokenized_property_name;
             static UrlBuilder<OurCommand,TheModel> result;
         }
