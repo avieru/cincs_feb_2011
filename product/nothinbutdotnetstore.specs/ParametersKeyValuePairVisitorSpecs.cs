@@ -2,14 +2,14 @@
 using Machine.Specifications;
 using Machine.Specifications.DevelopWithPassion.Extensions;
 using Machine.Specifications.DevelopWithPassion.Rhino;
-using nothinbutdotnetstore.core;
+using nothinbutdotnetstore.web.core;
 using nothinbutdotnetstore.web.core.urls;
 
 namespace nothinbutdotnetstore.specs
 {
     public class ParametersKeyValuePairVisitorSpecs
     {
-        public abstract class concern : Observes<Visitor<KeyValuePair<string, object>>,
+        public abstract class concern : Observes<UrlEncoder,
                                             ParametersKeyValuePairVisitor>
         {
             Establish c = () =>

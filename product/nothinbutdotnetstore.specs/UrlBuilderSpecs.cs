@@ -35,25 +35,6 @@ namespace nothinbutdotnetstore.specs
             static string the_tokenized_property_name;
         }
 
-        public class when_providing_an_iterator_to_the_token_members : concern
-        {
-            Establish c = () =>
-            {
-                the_first_token = new KeyValuePair<string, object>();
-                items = new List<KeyValuePair<string, object>> {the_first_token};
-                payload.Stub(x => x.GetEnumerator()).Return (items.GetEnumerator());
-            };
-
-            Because b = () =>
-                result = sut;
-
-            It should_return_the_iterator_of_the_unique_token_store = () =>
-                result.ShouldContain(the_first_token);
-
-            static IEnumerable<KeyValuePair<string,object>> result;
-            static KeyValuePair<string, object> the_first_token;
-            static IList<KeyValuePair<string,object>> items;
-        }
         [Subject(typeof(UrlBuilder<,>))]
         public class when_provided_a_property_to_include_in_the_payload : concern
         {
@@ -95,14 +76,48 @@ namespace nothinbutdotnetstore.specs
         }
 
 
-        [Subject(typeof(UrlBuilder<,>))]
-        public class when_tostring_method_is_called : concern
+        public class when_implicitly_converted_to_a_string : concern
         {
             Establish c = () =>
             {
                 TheModel model = new TheModel();
+                to_string_visitor = the_dependency<UrlEncoder>();
+                items = new List<KeyValuePair<string, object>>();
+                payload.Stub(x => x.GetEnumerator()).Return(items.GetEnumerator());
                 model.name = "val1";
-                create_sut_using(new UrlBuilderFactory<OurCommand>(new DefaultExpressionToPropertyNameMapper()).For(TheModel).with(model.name));
+                well_formed_url_built_by_visitor = "sdfsfsdfsdf";
+
+                to_string_visitor.Stub(x => x.get_result()).Return(well_formed_url_built_by_visitor);
+
+            };
+
+            Because b = () =>
+            {
+                result = sut;
+            };
+
+            It should_return_the_result_of_the_visitor_that_can_process_it = () =>
+                result.ShouldEqual(well_formed_url_built_by_visitor);
+
+            static string result;
+            static string well_formed_url_built_by_visitor;
+            static UrlEncoder to_string_visitor;
+            static IEnumerable<KeyValuePair<string,object>> items;
+        }
+        [Subject(typeof(UrlBuilder<,>))]
+        public class when_being_represented_as_a_string : concern
+        {
+            Establish c = () =>
+            {
+                TheModel model = new TheModel();
+                to_string_visitor = the_dependency<UrlEncoder>();
+                items = new List<KeyValuePair<string, object>>();
+                payload.Stub(x => x.GetEnumerator()).Return(items.GetEnumerator());
+                model.name = "val1";
+                well_formed_url_built_by_visitor = "sdfsfsdfsdf";
+
+                to_string_visitor.Stub(x => x.get_result()).Return(well_formed_url_built_by_visitor);
+
             };
 
             Because b = () =>
@@ -110,10 +125,13 @@ namespace nothinbutdotnetstore.specs
                 result = sut.ToString();
             };
 
-            It should_return_a_valid_http_url_string = () =>
-                result.ShouldEqual("OurCommand.cinc?name=val1");
+            It should_return_the_result_of_the_visitor_that_can_process_it = () =>
+                result.ShouldEqual(well_formed_url_built_by_visitor);
 
             static string result;
+            static string well_formed_url_built_by_visitor;
+            static UrlEncoder to_string_visitor;
+            static IEnumerable<KeyValuePair<string,object>> items;
         }
     }
 }

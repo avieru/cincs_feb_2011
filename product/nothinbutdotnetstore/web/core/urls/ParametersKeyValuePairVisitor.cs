@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using System.Text;
-using nothinbutdotnetstore.core;
 
 namespace nothinbutdotnetstore.web.core.urls
 {
-    public class ParametersKeyValuePairVisitor : ValueReturningVisitior<KeyValuePair<string, object>,string>
+    public class ParametersKeyValuePairVisitor : UrlEncoder
     {
         IList<KeyValuePair<string, object>> parameters;
 
@@ -20,7 +19,6 @@ namespace nothinbutdotnetstore.web.core.urls
 
         public string get_result()
         {
-
             //TODO - Will deal with this later
             var builder = new StringBuilder();
             new List<KeyValuePair<string, object>>(parameters).ForEach(

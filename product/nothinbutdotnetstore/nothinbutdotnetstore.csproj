@@ -75,6 +75,7 @@
     <Compile Include="core\PropertyAccessor.cs" />
     <Compile Include="core\TokenStoreFactory.cs" />
     <Compile Include="core\UniqueTokenValueStore.cs" />
+    <Compile Include="core\UrlEncoderFactory.cs" />
     <Compile Include="core\ValueReturningVisitior.cs" />
     <Compile Include="core\Visitor.cs" />
     <Compile Include="tasks\Catalog.cs" />
@@ -91,11 +92,14 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="web\core\CommandRegistry.cs" />
+    <Compile Include="web\core\CommonFactories.cs" />
     <Compile Include="web\core\DefaultCommandRegistry.cs" />
     <Compile Include="web\core\DefaultFrontController.cs" />
     <Compile Include="web\core\FormPathRegistry.cs" />
     <Compile Include="web\core\FormTransfer.cs" />
     <Compile Include="web\core\PageFactory.cs" />
+    <Compile Include="web\core\stub\StubEncoderFactory.cs" />
+    <Compile Include="web\core\UrlEncoder.cs" />
     <Compile Include="web\core\urls\CommandUrl.cs" />
     <Compile Include="web\core\urls\ParametersKeyValuePairVisitor.cs" />
     <Compile Include="web\core\stub\StubFormPathRegistry.cs" />

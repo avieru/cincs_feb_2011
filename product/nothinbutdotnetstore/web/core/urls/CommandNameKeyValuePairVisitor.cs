@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using nothinbutdotnetstore.core;
 
 namespace nothinbutdotnetstore.web.core.urls
 {
-    public class CommandNameKeyValuePairVisitor : ValueReturningVisitior<KeyValuePair<string, object>,string>
+    public class CommandNameKeyValuePairVisitor : UrlEncoder
     {
         public const string format_string = "{0}.cinc?";
         public string command_name { private set; get; }

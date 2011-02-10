@@ -21,6 +21,8 @@ namespace nothinbutdotnetstore.specs
             {
                 token_store = new FakeStore();
                 provide_a_basic_sut_constructor_argument<TokenStoreFactory>(() => token_store);
+                url_encoder = an<UrlEncoder>();
+                provide_a_basic_sut_constructor_argument<UrlEncoderFactory>(() => url_encoder);
                 the_mapper = the_dependency<ExpressionToPropertyNameMapper>();
                 the_model = new NotTheirModel();
             };
@@ -34,12 +36,14 @@ namespace nothinbutdotnetstore.specs
                 item.model.ShouldEqual(the_model);
                 item.payload.ShouldEqual(token_store);
                 item.expression_to_property_name_mapper.ShouldEqual(the_mapper);
+                item.url_encoding_visitor.ShouldEqual(url_encoder);
             };
 
             static UrlBuilder<CommandToRun, NotTheirModel> result;
             static NotTheirModel the_model;
             static ExpressionToPropertyNameMapper the_mapper;
             static UniqueTokenValueStore token_store;
+            static UrlEncoder url_encoder;
         }
 
         class FakeStore : UniqueTokenValueStore
