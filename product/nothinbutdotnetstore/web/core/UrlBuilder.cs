@@ -41,6 +41,4 @@ namespace nothinbutdotnetstore.web.core
             return GetEnumerator();
         }
     }
-
-    public delegate PropertyType PropertyAccessor<ItemToTarget, PropertyType>(ItemToTarget item);
 }
