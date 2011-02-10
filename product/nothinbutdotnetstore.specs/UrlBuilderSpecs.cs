@@ -18,6 +18,7 @@ namespace nothinbutdotnetstore.specs
             Establish c = () =>
             {
                 the_model = new TheModel();
+                the_model.id = 23;
                 payload = new NameValueCollection();
                 provide_a_basic_sut_constructor_argument(the_model);
                 provide_a_basic_sut_constructor_argument(payload);
