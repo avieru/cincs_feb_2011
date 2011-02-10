@@ -1,13 +1,13 @@
-using System;
 using System.Collections.Specialized;
+using System.Linq.Expressions;
 
 namespace nothinbutdotnetstore.web.core
 {
     public delegate PropertyType PropertyAccessor<ItemToTarget, PropertyType>(ItemToTarget item);
 
-    public class UrlBuilder<CommandToRun,Model> where CommandToRun : ApplicationCommand
+    public class UrlBuilder<CommandToRun, Model> where CommandToRun : ApplicationCommand
     {
-        readonly object model;
+        readonly Model model;
         readonly NameValueCollection payload;
 
         public UrlBuilder(Model model, NameValueCollection payload)
@@ -16,10 +16,9 @@ namespace nothinbutdotnetstore.web.core
             this.payload = payload;
         }
 
-        public void with<PropertyType>(PropertyAccessor<Model,PropertyType> accessor)
+        public void with<PropertyType>(Expression<PropertyAccessor<Model, PropertyType>> accessor)
         {
-            
-            payload.Add("id",accessor((Model)model).ToString());
+            payload.Add(((MemberExpression) accessor.Body).Member.Name, accessor.Compile()(model).ToString());
         }
     }
 }

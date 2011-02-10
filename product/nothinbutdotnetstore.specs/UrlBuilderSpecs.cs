@@ -2,6 +2,7 @@ using System;
 using System.Collections.Specialized;
 using Machine.Specifications;
 using Machine.Specifications.DevelopWithPassion.Rhino;
+using nothinbutdotnetstore.specs.spikes;
 using nothinbutdotnetstore.web.core;
 
 namespace nothinbutdotnetstore.specs
@@ -27,8 +28,8 @@ namespace nothinbutdotnetstore.specs
             Because b = () =>
                 sut.with(x => x.id);
 
-            It should_add_the_value_of_the_property_to_the_payload_collection = () =>
-                payload["id"].ShouldEqual(the_model.id.ToString());
+            It should_add_the_value_of_the_property_to_the_payload_collection_with_the_correct_key = () =>
+                payload[ExpressionUtility.name_of_property_on<TheModel,int>(x => x.id)].ShouldEqual(the_model.id.ToString());
 
             static NameValueCollection payload;
             static TheModel the_model;
