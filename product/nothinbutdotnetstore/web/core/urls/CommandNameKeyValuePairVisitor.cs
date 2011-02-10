@@ -5,6 +5,7 @@ namespace nothinbutdotnetstore.web.core.urls
 {
     public class CommandNameKeyValuePairVisitor : ValueReturningVisitior<KeyValuePair<string, object>,string>
     {
+        public const string format_string = "{0}.cinc?";
         public string command_name { private set; get; }
 
         public void process(KeyValuePair<string, object> token)
@@ -19,7 +20,7 @@ namespace nothinbutdotnetstore.web.core.urls
 
         public string get_result()
         {
-            return string.Format("{0}.cinc?", command_name);
+            return string.Format(format_string, command_name);
         }
     }
 }
