@@ -12,16 +12,6 @@ namespace nothinbutdotnetstore.web.core.stub
             return new MixedEncoder();
         }
 
-        private class IsNotFirst : Criteria<KeyValuePair<string, object>>
-        {
-            int number_processed;
-
-            public bool is_satisfied_by(KeyValuePair<string, object> item)
-            {
-                return number_processed++ > 0;
-            }
-        }
-
         private class MixedEncoder : UrlEncoder
         {
             ChainedVisitor<KeyValuePair<string, object>> composite_encoder;
