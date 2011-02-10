@@ -26,7 +26,12 @@ namespace nothinbutdotnetstore.web.core
 
         public string get_url()
         {
-            throw new NotImplementedException();
+            return string.Format("{0}?{1}",command_as_url(),builder);
+        }
+
+        string command_as_url()
+        {
+            return string.Format("{0}.cinc", command_name);
         }
     }
 }

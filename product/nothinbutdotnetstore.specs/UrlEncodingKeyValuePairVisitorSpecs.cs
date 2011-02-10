@@ -74,7 +74,7 @@ namespace nothinbutdotnetstore.specs
             };
 
             It should_return_the_name_of_the_command_suffixed_with_the_handler_token = () =>
-                result.ShouldBeEqualIgnoringCase("{0}.cinc".format_using(command_name));
+                result.ShouldBeEqualIgnoringCase("{0}.cinc?".format_using(command_name));
 
             static string result;
             static string command_name;
@@ -86,22 +86,21 @@ namespace nothinbutdotnetstore.specs
             {
                 command_name = "Command";
                 first = new KeyValuePair<string, object>("first_key",24);
-                second = new KeyValuePair<string, object>("second_key",27);
-
-                add_pipeline_behaviour_against_sut(
-                    x => x.process(new KeyValuePair<string, object>("ignored", command_name)));
-
-                add_pipeline_behaviour_against_sut(
-                    x => x.process(first));
-                add_pipeline_behaviour_against_sut(
-                    x => x.process(second));
+                second = new KeyValuePair<string, object>("second_key",27);            
             };
 
-            Because b = () => 
+            Because b = () =>
+            {
+                //setup
+                sut.process(new KeyValuePair<string, object>("ignored", command_name));
+                sut.process(first);
+                sut.process(second);
+
                 result = sut.get_url();
+            };
 
             It should_return_the_name_of_the_command_suffixed_with_the_handler_token = () =>
-                result.ShouldBeEqualIgnoringCase("{0}.cinc?{1}={2}&{3}={4}".format_using(command_name,
+                result.ShouldBeEqualIgnoringCase("{0}.cinc?&{1}={2}&{3}={4}".format_using(command_name,
                 first.Key,first.Value.ToString(),second.Key,second.Value.ToString()));
 
             static string result;
