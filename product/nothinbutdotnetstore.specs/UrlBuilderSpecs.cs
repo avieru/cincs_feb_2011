@@ -80,6 +80,33 @@ namespace nothinbutdotnetstore.specs
             static UrlBuilder<OurCommand, TheModel> result;
         }
 
+        [Subject(typeof(UrlBuilder<,>))]
+        public class when_overriding_to_string : concern
+        {
+            Establish c = () =>
+            {
+                the_model.id = 23;
+                the_tokenized_property_name = "sdfsdfsdf";
+                expression_to_property_name_mapper.Stub(
+                    x => x.map(Arg<Expression<PropertyAccessor<TheModel, int>>>.Is.NotNull)
+                    ).Return(the_tokenized_property_name);
+                payload.store_token_value(the_tokenized_property_name,the_model.id);
+            };
+
+            Because b = () =>
+            {
+                var builder = sut.with(x => x.id);
+                result = builder.ToString();
+            };
+
+            It should_return_string_representation = () =>
+                result.ShouldEqual("");
+
+            static string the_tokenized_property_name;
+            static string result;
+        }
+
+
         public class OurCommand : ApplicationCommand
         {
             public void run(Request request)
