@@ -1,4 +1,4 @@
-﻿namespace nothinbutdotnetstore.web.core
+﻿namespace nothinbutdotnetstore.core
 {
     public delegate PropertyType PropertyAccessor<ItemToTarget, PropertyType>(ItemToTarget item);
 }

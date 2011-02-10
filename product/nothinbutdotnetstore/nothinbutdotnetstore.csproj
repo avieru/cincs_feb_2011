@@ -64,16 +64,17 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculator.cs" />
     <Compile Include="core\ChainedVisitor.cs" />
     <Compile Include="core\ConditionalVisitor.cs" />
     <Compile Include="core\Criteria.cs" />
+    <Compile Include="core\DefaultExpressionToPropertyNameMapper.cs" />
+    <Compile Include="core\DefaultUniqueTokenValueStore.cs" />
     <Compile Include="core\EnumerableExtensions.cs" />
     <Compile Include="core\IsFirstItem.cs" />
+    <Compile Include="core\PropertyAccessor.cs" />
+    <Compile Include="core\UniqueTokenValueStore.cs" />
     <Compile Include="core\ValueReturningVisitior.cs" />
     <Compile Include="core\Visitor.cs" />
-    <Compile Include="DefaultCalculator.cs" />
-    <Compile Include="MessageGenerator.cs" />
     <Compile Include="tasks\Catalog.cs" />
     <Compile Include="tasks\stubs\StubCatalog.cs" />
     <Compile Include="web\application\catalogbrowsing\Department.cs" />
@@ -90,15 +91,12 @@
     <Compile Include="web\core\CommandRegistry.cs" />
     <Compile Include="web\core\DefaultCommandRegistry.cs" />
     <Compile Include="web\core\DefaultFrontController.cs" />
-    <Compile Include="web\core\DefaultUniqueTokenValueStore.cs" />
     <Compile Include="web\core\ExpressionToPropertyNameMapper.cs" />
     <Compile Include="web\core\FormPathRegistry.cs" />
     <Compile Include="web\core\FormTransfer.cs" />
     <Compile Include="web\core\PageFactory.cs" />
     <Compile Include="web\core\ParametersKeyValuePairVisitor.cs" />
-    <Compile Include="web\core\PropertyAccessor.cs" />
     <Compile Include="web\core\stub\StubFormPathRegistry.cs" />
-    <Compile Include="web\core\UniqueTokenValueStore.cs" />
     <Compile Include="web\core\UrlBuilder.cs" />
     <Compile Include="web\core\CommandNameKeyValuePairVisitor.cs" />
     <Compile Include="web\core\ViewFactory.cs" />

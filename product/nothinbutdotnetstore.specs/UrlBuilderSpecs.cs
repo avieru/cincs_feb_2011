@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Machine.Specifications;
 using Machine.Specifications.DevelopWithPassion.Rhino;
+using nothinbutdotnetstore.core;
 using nothinbutdotnetstore.web.core;
 using Rhino.Mocks;
 
