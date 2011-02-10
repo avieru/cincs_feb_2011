@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using System.Text;
 using nothinbutdotnetstore.core;
 
 namespace nothinbutdotnetstore.web.core
@@ -27,7 +27,11 @@ namespace nothinbutdotnetstore.web.core
 
         public string get_query_string()
         {
-            throw new NotImplementedException();
+            //TODO - Will deal with this later
+            var builder = new StringBuilder();
+            new List<KeyValuePair<string, object>>(parameters).ForEach(
+                pair => { builder.AppendFormat("&{0}={1}", pair.Key, pair.Value.ToString()); });
+            return builder.Remove(0, 1).ToString();
         }
     }
 }

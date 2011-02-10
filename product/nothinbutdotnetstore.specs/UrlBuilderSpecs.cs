@@ -31,7 +31,6 @@ namespace nothinbutdotnetstore.specs
                 payload.received(x => x.store_token_value(UrlBuilder<OurCommand,TheModel>.command_key, typeof(OurCommand).Name));
 
             static string the_tokenized_property_name;
-            static UrlBuilder<OurCommand, TheModel> result;
         }
 
         public class when_providing_an_iterator_to_the_token_members : concern
@@ -73,7 +72,7 @@ namespace nothinbutdotnetstore.specs
                 payload.received(x => x.store_token_value(the_tokenized_property_name, the_model.id));
 
             It should_return_the_builder_to_continue_payload_chaining = () =>
-                result.ShouldEqual(sut);
+                result.Equals(sut).ShouldBeTrue();
 
             static string the_tokenized_property_name;
             static UrlBuilder<OurCommand, TheModel> result;
