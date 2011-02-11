@@ -1,18 +1,17 @@
 using System.Data;
- using System.Data.SqlClient;
- using Machine.Specifications;
- using Machine.Specifications.DevelopWithPassion.Rhino;
- using nothinbutdotnetstore.core.containers;
- using Rhino.Mocks;
+using System.Data.SqlClient;
+using Machine.Specifications;
+using Machine.Specifications.DevelopWithPassion.Rhino;
+using nothinbutdotnetstore.core.containers;
+using Rhino.Mocks;
 
 namespace nothinbutdotnetstore.specs
-{   
+{
     public class BasicDependencyContainerSpecs
     {
         public abstract class concern : Observes<DependencyContainer,
                                             BasicDependencyContainer>
         {
-        
         }
 
         [Subject(typeof(BasicDependencyContainer))]
@@ -22,7 +21,7 @@ namespace nothinbutdotnetstore.specs
             {
                 dependency_factories = the_dependency<DependencyFactories>();
                 the_connection = new SqlConnection();
-                factory  = an<DependencyFactory>();
+                factory = an<DependencyFactory>();
 
                 dependency_factories.Stub(x => x.get_factory_that_can_create(typeof(IDbConnection)))
                     .Return(factory);
@@ -32,7 +31,6 @@ namespace nothinbutdotnetstore.specs
 
             Because b = () =>
                 result = sut.an<IDbConnection>();
-
 
             It should_return_the_item_created_by_the_dependency_factory_for_the_dependency_requested = () =>
                 result.ShouldEqual(the_connection);
@@ -50,7 +48,7 @@ namespace nothinbutdotnetstore.specs
             {
                 dependency_factories = the_dependency<DependencyFactories>();
                 the_connection = new SqlConnection();
-                factory  = an<DependencyFactory>();
+                factory = an<DependencyFactory>();
 
                 dependency_factories.Stub(x => x.get_factory_that_can_create(typeof(IDbConnection)))
                     .Return(factory);
@@ -60,7 +58,6 @@ namespace nothinbutdotnetstore.specs
 
             Because b = () =>
                 result = sut.an(typeof(IDbConnection));
-
 
             It should_return_the_item_created_by_the_dependency_factory_for_the_dependency_requested = () =>
                 result.ShouldEqual(the_connection);

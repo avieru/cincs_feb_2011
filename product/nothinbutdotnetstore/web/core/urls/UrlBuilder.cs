@@ -41,8 +41,7 @@ namespace nothinbutdotnetstore.web.core.urls
 
         public static implicit operator string(UrlBuilder<CommandToRun, Model> builder)
         {
-            return builder.ToString(); 
+            return builder.ToString();
         }
-
     }
 }

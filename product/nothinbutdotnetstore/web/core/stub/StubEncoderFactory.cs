@@ -33,7 +33,7 @@ namespace nothinbutdotnetstore.web.core.stub
                 this.name_encoder = new UrlEncodingVisitor(new CommandNameKeyValuePairVisitor(), HttpUtility.UrlEncode);
                 this.params_encoder =
                     new UrlEncodingVisitor(new ParametersKeyValuePairVisitor(new List<KeyValuePair<string, object>>()),
-                                    HttpUtility.UrlEncode);
+                                           HttpUtility.UrlEncode);
 
                 composite_encoder = new ChainedVisitor<KeyValuePair<string, object>>(
                     new ConditionalVisitor<KeyValuePair<string, object>>(name_encoder,

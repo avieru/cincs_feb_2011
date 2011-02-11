@@ -5,7 +5,9 @@ namespace nothinbutdotnetstore.core
 {
     public static class EnumerableExtensions
     {
-        public static ReturnType get_result_of_visit_all_items_with<T,ReturnType>(this IEnumerable<T> items, ValueReturningVisitior<T,ReturnType> visitor)
+        public static ReturnType get_result_of_visit_all_items_with<T, ReturnType>(this IEnumerable<T> items,
+                                                                                   ValueReturningVisitior<T, ReturnType>
+                                                                                       visitor)
         {
             visit_all_items_with(items, visitor);
             return visitor.get_result();

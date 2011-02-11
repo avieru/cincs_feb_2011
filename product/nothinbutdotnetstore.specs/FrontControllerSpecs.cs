@@ -1,16 +1,15 @@
- using Machine.Specifications;
- using Machine.Specifications.DevelopWithPassion.Rhino;
- using nothinbutdotnetstore.web.core;
- using Rhino.Mocks;
+using Machine.Specifications;
+using Machine.Specifications.DevelopWithPassion.Rhino;
+using nothinbutdotnetstore.web.core;
+using Rhino.Mocks;
 
 namespace nothinbutdotnetstore.specs
-{   
+{
     public class FrontControllerSpecs
     {
         public abstract class concern : Observes<FrontController,
                                             DefaultFrontController>
         {
-        
         }
 
         [Subject(typeof(DefaultFrontController))]
@@ -28,7 +27,6 @@ namespace nothinbutdotnetstore.specs
 
             Because b = () =>
                 sut.process(request);
-
 
             It should_delegate_the_processing_to_the_command_that_can_process_the_request = () =>
                 command_that_can_process.received(x => x.run(request));

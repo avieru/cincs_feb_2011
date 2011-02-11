@@ -1,16 +1,15 @@
- using Machine.Specifications;
- using Machine.Specifications.DevelopWithPassion.Rhino;
- using nothinbutdotnetstore.core;
- using Rhino.Mocks;
+using Machine.Specifications;
+using Machine.Specifications.DevelopWithPassion.Rhino;
+using nothinbutdotnetstore.core;
+using Rhino.Mocks;
 
 namespace nothinbutdotnetstore.specs
-{   
+{
     public class ConditionalVisitorSpecs
     {
         public abstract class concern : Observes<Visitor<int>,
                                             ConditionalVisitor<int>>
         {
-        
         }
 
         [Subject(typeof(ConditionalVisitor<>))]
@@ -28,7 +27,6 @@ namespace nothinbutdotnetstore.specs
 
             Because b = () =>
                 sut.process(item);
-
 
             It should_tell_the_real_visitor_to_process_the_item = () =>
                 real_visitor.process(item);

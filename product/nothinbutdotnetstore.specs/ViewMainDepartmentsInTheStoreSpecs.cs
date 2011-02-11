@@ -27,7 +27,6 @@ namespace nothinbutdotnetstore.specs
                 request = an<Request>();
 
                 catalog.Stub(x => x.get_the_main_departments()).Return(the_main_departments);
-
             };
 
             Because b = () =>

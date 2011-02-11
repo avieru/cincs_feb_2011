@@ -8,8 +8,8 @@ namespace nothinbutdotnetstore.web.core
         FrontController front_controller;
         RequestFactory request_factory;
 
-        public BasicHandler():this(Container.resolve.an<FrontController>(),
-            Container.resolve.an<RequestFactory>())
+        public BasicHandler() : this(Container.resolve.an<FrontController>(),
+                                     Container.resolve.an<RequestFactory>())
         {
         }
 
