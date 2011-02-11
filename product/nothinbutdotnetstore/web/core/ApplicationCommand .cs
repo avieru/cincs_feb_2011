@@ -1,6 +1,6 @@
 namespace nothinbutdotnetstore.web.core
 {
-    public interface ApplicationCommand 
+    public interface ApplicationCommand
     {
         void run(Request request);
     }

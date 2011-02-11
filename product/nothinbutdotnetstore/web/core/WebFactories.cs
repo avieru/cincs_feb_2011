@@ -14,7 +14,5 @@ namespace nothinbutdotnetstore.web.core
 
         public static readonly SpecialCaseDependencyFactory special_case_dependency_factory =
             (type_that_has_no_factory) => new StubMissingDependencyFactory(type_that_has_no_factory);
-
-
     }
 }

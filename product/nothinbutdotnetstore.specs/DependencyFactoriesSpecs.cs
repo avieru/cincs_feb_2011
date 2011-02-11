@@ -1,17 +1,16 @@
- using System;
- using System.Collections.Generic;
- using Machine.Specifications;
- using Machine.Specifications.DevelopWithPassion.Rhino;
- using nothinbutdotnetstore.core.containers;
+using System;
+using System.Collections.Generic;
+using Machine.Specifications;
+using Machine.Specifications.DevelopWithPassion.Rhino;
+using nothinbutdotnetstore.core.containers;
 
 namespace nothinbutdotnetstore.specs
-{   
+{
     public class DependencyFactoriesSpecs
     {
         public abstract class concern : Observes<DependencyFactories,
                                             BasicDependencyFactories>
         {
-
             Establish c = () =>
             {
                 special_case = an<DependencyFactory>();
@@ -32,8 +31,8 @@ namespace nothinbutdotnetstore.specs
             Establish c = () =>
             {
                 the_factory = an<DependencyFactory>();
-                all_factories = new Dictionary<Type,DependencyFactory>();
-                all_factories.Add(typeof(OurDependency),the_factory );
+                all_factories = new Dictionary<Type, DependencyFactory>();
+                all_factories.Add(typeof(OurDependency), the_factory);
 
                 provide_a_basic_sut_constructor_argument(all_factories);
             };
@@ -53,7 +52,7 @@ namespace nothinbutdotnetstore.specs
         {
             Establish c = () =>
             {
-                all_factories = new Dictionary<Type,DependencyFactory>();
+                all_factories = new Dictionary<Type, DependencyFactory>();
                 provide_a_basic_sut_constructor_argument(all_factories);
             };
 
@@ -65,7 +64,6 @@ namespace nothinbutdotnetstore.specs
                 type_that_has_no_factory.ShouldEqual(typeof(OurDependency));
                 result.ShouldEqual(special_case);
             };
-
 
             static DependencyFactory result;
             static DependencyFactory the_factory;

@@ -1,5 +1,3 @@
-using System;
-
 namespace nothinbutdotnetstore.web.application.catalogbrowsing
 {
     public class Product

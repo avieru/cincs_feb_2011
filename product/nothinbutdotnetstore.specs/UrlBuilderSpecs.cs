@@ -30,7 +30,8 @@ namespace nothinbutdotnetstore.specs
         public class when_created : concern
         {
             It should_add_the_name_of_the_command_to_the_token_value_store = () =>
-                payload.received(x => x.store_token_value(UrlBuilder<OurCommand,TheModel>.command_key, typeof(OurCommand).Name));
+                payload.received(
+                    x => x.store_token_value(UrlBuilder<OurCommand, TheModel>.command_key, typeof(OurCommand).Name));
 
             static string the_tokenized_property_name;
         }
@@ -75,12 +76,11 @@ namespace nothinbutdotnetstore.specs
             public int id { get; set; }
         }
 
-
         public class when_implicitly_converted_to_a_string : concern
         {
             Establish c = () =>
             {
-                TheModel model = new TheModel();
+                var model = new TheModel();
                 to_string_visitor = the_dependency<UrlEncoder>();
                 items = new List<KeyValuePair<string, object>>();
                 payload.Stub(x => x.GetEnumerator()).Return(items.GetEnumerator());
@@ -88,13 +88,9 @@ namespace nothinbutdotnetstore.specs
                 well_formed_url_built_by_visitor = "sdfsfsdfsdf";
 
                 to_string_visitor.Stub(x => x.get_result()).Return(well_formed_url_built_by_visitor);
-
             };
 
-            Because b = () =>
-            {
-                result = sut;
-            };
+            Because b = () => { result = sut; };
 
             It should_return_the_result_of_the_visitor_that_can_process_it = () =>
                 result.ShouldEqual(well_formed_url_built_by_visitor);
@@ -102,14 +98,15 @@ namespace nothinbutdotnetstore.specs
             static string result;
             static string well_formed_url_built_by_visitor;
             static UrlEncoder to_string_visitor;
-            static IEnumerable<KeyValuePair<string,object>> items;
+            static IEnumerable<KeyValuePair<string, object>> items;
         }
+
         [Subject(typeof(UrlBuilder<,>))]
         public class when_being_represented_as_a_string : concern
         {
             Establish c = () =>
             {
-                TheModel model = new TheModel();
+                var model = new TheModel();
                 to_string_visitor = the_dependency<UrlEncoder>();
                 items = new List<KeyValuePair<string, object>>();
                 payload.Stub(x => x.GetEnumerator()).Return(items.GetEnumerator());
@@ -117,13 +114,9 @@ namespace nothinbutdotnetstore.specs
                 well_formed_url_built_by_visitor = "sdfsfsdfsdf";
 
                 to_string_visitor.Stub(x => x.get_result()).Return(well_formed_url_built_by_visitor);
-
             };
 
-            Because b = () =>
-            {
-                result = sut.ToString();
-            };
+            Because b = () => { result = sut.ToString(); };
 
             It should_return_the_result_of_the_visitor_that_can_process_it = () =>
                 result.ShouldEqual(well_formed_url_built_by_visitor);
@@ -131,7 +124,7 @@ namespace nothinbutdotnetstore.specs
             static string result;
             static string well_formed_url_built_by_visitor;
             static UrlEncoder to_string_visitor;
-            static IEnumerable<KeyValuePair<string,object>> items;
+            static IEnumerable<KeyValuePair<string, object>> items;
         }
     }
 }

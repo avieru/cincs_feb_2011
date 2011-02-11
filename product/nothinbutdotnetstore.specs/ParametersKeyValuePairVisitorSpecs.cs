@@ -2,7 +2,6 @@
 using Machine.Specifications;
 using Machine.Specifications.DevelopWithPassion.Extensions;
 using Machine.Specifications.DevelopWithPassion.Rhino;
-using nothinbutdotnetstore.web.core;
 using nothinbutdotnetstore.web.core.urls;
 
 namespace nothinbutdotnetstore.specs

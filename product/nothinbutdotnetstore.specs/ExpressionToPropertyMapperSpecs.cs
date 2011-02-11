@@ -1,16 +1,14 @@
 using Machine.Specifications;
 using Machine.Specifications.DevelopWithPassion.Rhino;
 using nothinbutdotnetstore.core;
-using nothinbutdotnetstore.web.core;
 
 namespace nothinbutdotnetstore.specs
-{   
+{
     public class ExpressionToPropertyMapperSpecs
     {
         public abstract class concern : Observes<ExpressionToPropertyNameMapper,
                                             DefaultExpressionToPropertyNameMapper>
         {
-        
         }
 
         [Subject(typeof(DefaultExpressionToPropertyNameMapper))]
@@ -23,7 +21,6 @@ namespace nothinbutdotnetstore.specs
                 result.ShouldEqual("Name");
 
             static string result;
-                
         }
     }
 

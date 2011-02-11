@@ -4,13 +4,12 @@ using Machine.Specifications.DevelopWithPassion.Rhino;
 using nothinbutdotnetstore.core.containers;
 
 namespace nothinbutdotnetstore.specs
-{   
+{
     public class BasicDependencyFactorySpecs
     {
         public abstract class concern : Observes<DependencyFactory,
                                             BasicDependencyFactory>
         {
-        
         }
 
         [Subject(typeof(BasicDependencyFactory))]
@@ -25,7 +24,6 @@ namespace nothinbutdotnetstore.specs
             Because b = () =>
                 result = sut.create();
 
-
             It should_return_the_instance_create_by_the_provided_factory = () =>
                 result.ShouldEqual(the_item);
 
@@ -34,4 +32,3 @@ namespace nothinbutdotnetstore.specs
         }
     }
 }
-

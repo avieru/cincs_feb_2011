@@ -1,4 +1,3 @@
-using System;
 using System.Web;
 using nothinbutdotnetstore.core;
 using nothinbutdotnetstore.web.application.catalogbrowsing;
@@ -25,7 +24,7 @@ namespace nothinbutdotnetstore.web.core.stub
             {
                 var item = new Department();
                 item.number_of_products = 2;
-                int number = get_the_number_of_products_in(the_current_context);
+                var number = get_the_number_of_products_in(the_current_context);
                 item.number_of_products = number;
                 object result = item;
 
@@ -41,7 +40,7 @@ namespace nothinbutdotnetstore.web.core.stub
 
             public string raw_url
             {
-                get { return HttpUtility.UrlDecode(the_current_context.Request.RawUrl);}
+                get { return HttpUtility.UrlDecode(the_current_context.Request.RawUrl); }
             }
         }
     }

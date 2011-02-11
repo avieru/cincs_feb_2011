@@ -12,8 +12,6 @@ namespace nothinbutdotnetstore.tasks.startup.stubs
             this.original = original;
         }
 
-
-
         public object create()
         {
             try
@@ -22,7 +20,8 @@ namespace nothinbutdotnetstore.tasks.startup.stubs
             }
             catch (Exception e)
             {
-                throw new NotImplementedException(string.Format("Could not create an instance of the dependency {0}",typeof(TypeToCreate).Name));
+                throw new NotImplementedException(string.Format("Could not create an instance of the dependency {0}",
+                                                                typeof(TypeToCreate).Name));
             }
         }
     }
