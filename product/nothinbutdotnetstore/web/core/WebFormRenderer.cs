@@ -1,16 +1,9 @@
-using System.Web;
-
 namespace nothinbutdotnetstore.web.core
 {
     public class WebFormRenderer : Renderer
     {
         ActiveContextResolver context_resolver;
         ViewFactory view_factory;
-
-        public WebFormRenderer():this(() => HttpContext.Current,
-            new WebFormViewFactory())
-        {
-        }
 
         public WebFormRenderer(ActiveContextResolver context_resolver, ViewFactory view_factory)
         {

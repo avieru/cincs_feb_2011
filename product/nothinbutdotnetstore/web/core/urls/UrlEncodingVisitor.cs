@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nothinbutdotnetstore.web.core
+namespace nothinbutdotnetstore.web.core.urls
 {
     public class UrlEncodingVisitor : UrlEncoder
     {
@@ -15,7 +15,7 @@ namespace nothinbutdotnetstore.web.core
 
         public string get_result()
         {
-            return encode(base_encoder.get_result());
+            return (base_encoder.get_result());
         }
 
         public void process(KeyValuePair<string, object> item)

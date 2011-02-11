@@ -1,5 +1,4 @@
 using nothinbutdotnetstore.tasks;
-using nothinbutdotnetstore.tasks.stubs;
 using nothinbutdotnetstore.web.core;
 
 namespace nothinbutdotnetstore.web.application.catalogbrowsing
@@ -8,11 +7,6 @@ namespace nothinbutdotnetstore.web.application.catalogbrowsing
     {
         Catalog catalog;
         Renderer renderer;
-
-        public ViewMainDepartmentsInTheStore():this(new StubCatalog(),
-            new WebFormRenderer())
-        {
-        }
 
         public ViewMainDepartmentsInTheStore(Catalog catalog, Renderer renderer)
         {

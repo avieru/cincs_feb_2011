@@ -9,7 +9,8 @@ namespace nothinbutdotnetstore.web.core.urls
         TokenStoreFactory token_store_factory;
         UrlEncoderFactory url_encoder_factory;
 
-        public UrlBuilderFactory(ExpressionToPropertyNameMapper expression_to_property_name_mapper, TokenStoreFactory token_store_factory, UrlEncoderFactory url_encoder_factory)
+        public UrlBuilderFactory(ExpressionToPropertyNameMapper expression_to_property_name_mapper,
+                                 TokenStoreFactory token_store_factory, UrlEncoderFactory url_encoder_factory)
         {
             this.expression_to_property_name_mapper = expression_to_property_name_mapper;
             this.token_store_factory = token_store_factory;
@@ -19,8 +20,19 @@ namespace nothinbutdotnetstore.web.core.urls
         public UrlBuilder<CommandToBuildUrlsTo, ReportModel> For<ReportModel>(ReportModel the_model)
         {
             return new UrlBuilder<CommandToBuildUrlsTo, ReportModel>(the_model,
-                                                        token_store_factory(),
-                                                        expression_to_property_name_mapper,url_encoder_factory());
+                                                                     token_store_factory(),
+                                                                     expression_to_property_name_mapper,
+                                                                     url_encoder_factory());
+        }
+
+        public UrlBuilder<CommandToBuildUrlsTo,SomeDummyItem> basic()
+        {
+            return For(new SomeDummyItem()).with(x => x.value);
+        }
+
+        public class SomeDummyItem
+        {
+            public int value { get; set; } 
         }
     }
 }

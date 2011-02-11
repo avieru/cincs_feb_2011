@@ -64,6 +64,7 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="core\AndCriteria.cs" />
     <Compile Include="core\ChainedVisitor.cs" />
     <Compile Include="core\ConditionalVisitor.cs" />
     <Compile Include="core\Criteria.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="core\Visitor.cs" />
     <Compile Include="tasks\Catalog.cs" />
     <Compile Include="tasks\stubs\StubCatalog.cs" />
+    <Compile Include="web\application\catalogbrowsing\CatalogController.cs" />
     <Compile Include="web\application\catalogbrowsing\Department.cs" />
     <Compile Include="web\application\catalogbrowsing\Product.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewDepartmentProducts.cs" />
@@ -97,11 +99,13 @@
     <Compile Include="web\core\DefaultFrontController.cs" />
     <Compile Include="web\core\FormPathRegistry.cs" />
     <Compile Include="web\core\FormTransfer.cs" />
-    <Compile Include="web\core\UrlEncode.cs" />
-    <Compile Include="web\core\UrlEncodingVisitor.cs" />
+    <Compile Include="web\core\RequestContainsPayloadWithDetail.cs" />
+    <Compile Include="web\core\RequestIsFor.cs" />
+    <Compile Include="web\core\urls\UrlEncode.cs" />
+    <Compile Include="web\core\urls\UrlEncodingVisitor.cs" />
     <Compile Include="web\core\PageFactory.cs" />
     <Compile Include="web\core\stub\StubEncoderFactory.cs" />
-    <Compile Include="web\core\UrlEncoder.cs" />
+    <Compile Include="web\core\urls\UrlEncoder.cs" />
     <Compile Include="web\core\urls\CommandUrl.cs" />
     <Compile Include="web\core\urls\ParametersKeyValuePairVisitor.cs" />
     <Compile Include="web\core\stub\StubFormPathRegistry.cs" />

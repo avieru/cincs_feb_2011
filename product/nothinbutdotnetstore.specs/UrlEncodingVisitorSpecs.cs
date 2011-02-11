@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Machine.Specifications;
 using Machine.Specifications.DevelopWithPassion.Rhino;
 using nothinbutdotnetstore.web.core;
+using nothinbutdotnetstore.web.core.urls;
 using Rhino.Mocks;
 
 namespace nothinbutdotnetstore.specs

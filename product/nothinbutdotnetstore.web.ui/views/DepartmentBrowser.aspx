@@ -13,8 +13,8 @@ CodeFile="DepartmentBrowser.aspx.cs"
                   foreach (var department in this.model)
                   {%>
               <tr class="ListItem">
-                 <td><a href="<%= CommandUrl.to_run<ViewDepartmentsInDepartment>()
-                 .For(department).with(x => x.name) %>"><%=department.name%></a></td>
+                 <td><a href="<%= CommandUrl.to_run<CatalogController>(x => x.get_the_main_departments())
+                 .with(department) %>"><%=department.name%></a></td>
            	  </tr>        
               <%
                   }%>
