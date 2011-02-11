@@ -1,6 +1,9 @@
+ using System.Data;
+ using System.Data.SqlClient;
  using Machine.Specifications;
  using Machine.Specifications.DevelopWithPassion.Rhino;
  using nothinbutdotnetstore.core.containers;
+ using Rhino.Mocks;
 
 namespace nothinbutdotnetstore.specs
 {   
@@ -15,7 +18,29 @@ namespace nothinbutdotnetstore.specs
         [Subject(typeof(BasicDependencyContainer))]
         public class when_resolving_an_dependency : concern
         {
-                
+            Establish c = () =>
+            {
+                the_connection = new SqlConnection();
+                dependency_factories = the_dependency<DependencyFactories>();
+                factory  = an<DependencyFactory>();
+                factory.Stub(x => x.create()).Return(the_connection);
+
+
+                dependency_factories.Stub(x => x.get_factory_that_can_create(typeof(IDbConnection)))
+                    .Return(factory);
+            };
+
+            Because b = () =>
+                result = sut.an<IDbConnection>();
+
+
+            It should_return_the_item_created_by_the_dependency_factory_for_the_dependency_requested = () =>
+                result.ShouldEqual(the_connection);
+
+            static IDbConnection result;
+            static IDbConnection the_connection;
+            static DependencyFactories dependency_factories;
+            static DependencyFactory factory;
         }
     }
 }
