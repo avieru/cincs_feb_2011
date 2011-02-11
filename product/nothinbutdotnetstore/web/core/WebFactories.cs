@@ -3,7 +3,7 @@ using nothinbutdotnetstore.web.core.stub;
 
 namespace nothinbutdotnetstore.web.core
 {
-    public class CommonFactories
+    public class WebFactories
     {
         public static readonly TokenStoreFactory token_store_factory = () =>
             new DefaultUniqueTokenValueStore();
