@@ -7,6 +7,7 @@ namespace nothinbutdotnetstore.web.core
         FrontController front_controller;
         RequestFactory request_factory;
 
+
         public BasicHandler(FrontController front_controller, RequestFactory request_factory)
         {
             this.front_controller = front_controller;

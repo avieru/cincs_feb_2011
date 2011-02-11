@@ -86,6 +86,7 @@
     <Compile Include="CommandUrlSpecs.cs" />
     <Compile Include="CommandRegistrySpecs.cs" />
     <Compile Include="ConditionalVisitorSpecs.cs" />
+    <Compile Include="ContainerSpecs.cs" />
     <Compile Include="EnumerableVisitorAttachment.cs" />
     <Compile Include="ExpressionToPropertyMapperSpecs.cs" />
     <Compile Include="IsFirstItemSpecs.cs" />
