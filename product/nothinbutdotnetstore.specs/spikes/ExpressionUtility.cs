@@ -14,9 +14,9 @@ namespace nothinbutdotnetstore.specs.spikes
             return new DefaultExpressionToPropertyNameMapper().map(accessor);
         }
 
-        public static ConstructorInfo constructor_pointed_at_by<Item>(Expression<Func<Item>> constructor)
+        public static ConstructorInfo constructor_pointed_at_by(Expression<Func<object>> constructor)
         {
-            return constructor.downcast_to<NewExpression>().Constructor;
+            return constructor.Body.downcast_to<NewExpression>().Constructor;
         }
     }
 }
