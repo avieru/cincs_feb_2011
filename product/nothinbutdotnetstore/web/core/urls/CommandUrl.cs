@@ -9,8 +9,8 @@ namespace nothinbutdotnetstore.web.core.urls
         {
             return new UrlBuilderFactory<CommandToTarget>(
                 new DefaultExpressionToPropertyNameMapper(),
-                CommonFactories.token_store_factory,
-                CommonFactories.encoder_factory);
+                WebFactories.token_store_factory,
+                WebFactories.encoder_factory);
         }
     }
 }
