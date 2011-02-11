@@ -64,11 +64,27 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculator.cs" />
-    <Compile Include="DefaultCalculator.cs" />
-    <Compile Include="MessageGenerator.cs" />
+    <Compile Include="core\AndCriteria.cs" />
+    <Compile Include="core\ChainedVisitor.cs" />
+    <Compile Include="core\ConditionalVisitor.cs" />
+    <Compile Include="core\containers\Container.cs" />
+    <Compile Include="core\containers\ContainerFactory .cs" />
+    <Compile Include="core\containers\DependencyContainer .cs" />
+    <Compile Include="core\Criteria.cs" />
+    <Compile Include="core\DefaultExpressionToPropertyNameMapper.cs" />
+    <Compile Include="core\DefaultUniqueTokenValueStore.cs" />
+    <Compile Include="core\EnumerableExtensions.cs" />
+    <Compile Include="core\ExpressionToPropertyNameMapper.cs" />
+    <Compile Include="core\IsFirstItem.cs" />
+    <Compile Include="core\PropertyAccessor.cs" />
+    <Compile Include="core\TokenStoreFactory.cs" />
+    <Compile Include="core\UniqueTokenValueStore.cs" />
+    <Compile Include="core\UrlEncoderFactory.cs" />
+    <Compile Include="core\ValueReturningVisitior.cs" />
+    <Compile Include="core\Visitor.cs" />
     <Compile Include="tasks\Catalog.cs" />
     <Compile Include="tasks\stubs\StubCatalog.cs" />
+    <Compile Include="web\application\catalogbrowsing\CatalogController.cs" />
     <Compile Include="web\application\catalogbrowsing\Department.cs" />
     <Compile Include="web\application\catalogbrowsing\Product.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewDepartmentProducts.cs" />
@@ -81,16 +97,24 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="web\core\CommandRegistry.cs" />
+    <Compile Include="web\core\CommonFactories.cs" />
     <Compile Include="web\core\DefaultCommandRegistry.cs" />
     <Compile Include="web\core\DefaultFrontController.cs" />
-    <Compile Include="web\core\ExpressionToPropertyNameMapper.cs" />
     <Compile Include="web\core\FormPathRegistry.cs" />
     <Compile Include="web\core\FormTransfer.cs" />
+    <Compile Include="web\core\RequestContainsPayloadWithDetail.cs" />
+    <Compile Include="web\core\RequestIsFor.cs" />
+    <Compile Include="web\core\urls\UrlEncode.cs" />
+    <Compile Include="web\core\urls\UrlEncodingVisitor.cs" />
     <Compile Include="web\core\PageFactory.cs" />
+    <Compile Include="web\core\stub\StubEncoderFactory.cs" />
+    <Compile Include="web\core\urls\UrlEncoder.cs" />
+    <Compile Include="web\core\urls\CommandUrl.cs" />
+    <Compile Include="web\core\urls\ParametersKeyValuePairVisitor.cs" />
     <Compile Include="web\core\stub\StubFormPathRegistry.cs" />
-    <Compile Include="web\core\UniqueTokenValueStore.cs" />
-    <Compile Include="web\core\UrlBuilder.cs" />
-    <Compile Include="web\core\UrlEncodingKeyValuePairVisitor.cs" />
+    <Compile Include="web\core\urls\UrlBuilder.cs" />
+    <Compile Include="web\core\urls\CommandNameKeyValuePairVisitor.cs" />
+    <Compile Include="web\core\urls\UrlBuilderFactory.cs" />
     <Compile Include="web\core\ViewFactory.cs" />
     <Compile Include="web\core\ViewFor.cs" />
     <Compile Include="web\core\WebFormRenderer.cs" />

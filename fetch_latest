@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-#finished the latest script
+
 def run_git_command(command,capture_ouptut = false)
     full_command = "git #{command}"
     if (capture_ouptut)

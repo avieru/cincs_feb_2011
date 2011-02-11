@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using nothinbutdotnetstore.web.application.catalogbrowsing;
 
 namespace nothinbutdotnetstore.web.core.stub
@@ -6,11 +7,16 @@ namespace nothinbutdotnetstore.web.core.stub
     {
         public string get_path_to_view_that_can_render<ReportModel>()
         {
-            if (typeof(ReportModel).Equals(typeof(Department)))
+            if (typeof(ReportModel) == typeof(IEnumerable<Department>))
             {
-                return "~/views/DepartmentBrowser.aspx";
+                return create_view("DepartmentBrowser");
             }
-            return "~/views/ProductBrowser.aspx";
+            return create_view("ProductBrowser");
+        }
+
+        string create_view(string raw_name)
+        {
+            return string.Format("~/views/{0}.aspx", raw_name);
         }
     }
 }

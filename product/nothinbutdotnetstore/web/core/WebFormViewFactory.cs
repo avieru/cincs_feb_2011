@@ -1,6 +1,4 @@
 using System.Web;
-using System.Web.Compilation;
-using nothinbutdotnetstore.web.core.stub;
 
 namespace nothinbutdotnetstore.web.core
 {
@@ -8,11 +6,6 @@ namespace nothinbutdotnetstore.web.core
     {
         FormPathRegistry form_path_registry;
         PageFactory page_factory;
-
-        public WebFormViewFactory() : this(new StubFormPathRegistry(),
-                                           BuildManager.CreateInstanceFromVirtualPath)
-        {
-        }
 
         public WebFormViewFactory(FormPathRegistry form_path_registry, PageFactory page_factory)
         {

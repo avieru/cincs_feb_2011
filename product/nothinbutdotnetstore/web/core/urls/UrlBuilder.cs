@@ -1,21 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq.Expressions;
+using nothinbutdotnetstore.core;
 
-namespace nothinbutdotnetstore.web.core
+namespace nothinbutdotnetstore.web.core.urls
 {
-    public class UrlBuilder<CommandToRun, Model> : IEnumerable<KeyValuePair<string, object>>
+    public class UrlBuilder<CommandToRun, Model>
         where CommandToRun : ApplicationCommand
     {
-        Model model;
-        UniqueTokenValueStore payload;
-        ExpressionToPropertyNameMapper expression_to_property_name_mapper;
+        public Model model;
+        public UniqueTokenValueStore payload;
+        public ExpressionToPropertyNameMapper expression_to_property_name_mapper;
+        public UrlEncoder url_encoding_visitor;
+
         public const string command_key = "command_name";
 
         public UrlBuilder(Model model, UniqueTokenValueStore payload,
-                          ExpressionToPropertyNameMapper expression_to_property_name_mapper)
+                          ExpressionToPropertyNameMapper expression_to_property_name_mapper,
+                          UrlEncoder url_encoding_visitor)
         {
             this.model = model;
+            this.url_encoding_visitor = url_encoding_visitor;
             this.expression_to_property_name_mapper = expression_to_property_name_mapper;
             this.payload = payload;
 
@@ -31,16 +34,15 @@ namespace nothinbutdotnetstore.web.core
             return this;
         }
 
-        public IEnumerator<KeyValuePair<string, object>> GetEnumerator()
+        public override string ToString()
         {
-            return payload.GetEnumerator();
+            return payload.get_result_of_visit_all_items_with(url_encoding_visitor);
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        public static implicit operator string(UrlBuilder<CommandToRun, Model> builder)
         {
-            return GetEnumerator();
+            return builder.ToString(); 
         }
+
     }
-
-    public delegate PropertyType PropertyAccessor<ItemToTarget, PropertyType>(ItemToTarget item);
 }

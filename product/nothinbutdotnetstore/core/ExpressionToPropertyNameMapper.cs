@@ -1,6 +1,6 @@
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
-namespace nothinbutdotnetstore.web.core
+namespace nothinbutdotnetstore.core
 {
     public interface ExpressionToPropertyNameMapper
     {
