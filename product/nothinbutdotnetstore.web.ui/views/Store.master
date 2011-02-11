@@ -58,7 +58,7 @@
                     <li>
                         <ul>
                             <li><a href="StoreDirectory.aspx">Store Directory</a></li>
-                            <li><a href="blah.cinc">Department Browser</a></li>
+                            <li><a href="<%= CommandUrl.to_run<ViewMainDepartmentsInTheStore>().basic() %>">Department Browser</a></li>
                         </ul>
                     
                     </li>           
