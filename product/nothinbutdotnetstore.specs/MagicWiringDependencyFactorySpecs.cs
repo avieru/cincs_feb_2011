@@ -1,21 +1,20 @@
- using System;
- using System.Data;
- using System.Data.SqlClient;
- using System.Reflection;
- using Machine.Specifications;
- using Machine.Specifications.DevelopWithPassion.Rhino;
- using nothinbutdotnetstore.core.containers;
- using Rhino.Mocks;
- using System.Linq;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Reflection;
+using Machine.Specifications;
+using Machine.Specifications.DevelopWithPassion.Rhino;
+using nothinbutdotnetstore.core.containers;
+using nothinbutdotnetstore.specs.spikes;
+using Rhino.Mocks;
 
 namespace nothinbutdotnetstore.specs
-{   
+{
     public class MagicWiringDependencyFactorySpecs
     {
         public abstract class concern : Observes<DependencyFactory,
                                             MagicWiringDependencyFactory>
         {
-        
         }
 
         [Subject(typeof(MagicWiringDependencyFactory))]
@@ -32,10 +31,9 @@ namespace nothinbutdotnetstore.specs
                 sql_connection = new SqlConnection();
                 other_item = new Other();
 
-                the_greediest_constructor =
-                    the_type_that_is_being_created.GetConstructors().OrderByDescending(
-                        x => x.GetParameters().Count())
-                        .First();
+                the_greediest_constructor = ExpressionUtility.constructor_pointed_at_by(() =>
+                                                                                            new OurTypeWithLotsOfDependencies
+                                                                                            (null, null, null));
 
                 constructor_selection_strategy.Stub(
                     x => x.get_applicable_constructor_on(the_type_that_is_being_created))
@@ -44,12 +42,10 @@ namespace nothinbutdotnetstore.specs
                 the_container.Stub(x => x.an(typeof(IDbConnection))).Return(sql_connection);
                 the_container.Stub(x => x.an(typeof(IDbCommand))).Return(sql_command);
                 the_container.Stub(x => x.an(typeof(Other))).Return(other_item);
-
             };
 
             Because b = () =>
                 result = sut.create();
-
 
             It should_create_an_instance_of_the_dependency_with_all_of_its_dependencies_satisfied = () =>
             {
