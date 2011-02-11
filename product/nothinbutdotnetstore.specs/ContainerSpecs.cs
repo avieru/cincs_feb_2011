@@ -18,6 +18,7 @@ namespace nothinbutdotnetstore.specs
             Establish c = () =>
             {
                 the_real_container = an<DependencyContainer>();
+
                 ContainerFactory factory = () => the_real_container;
                 change(() => Container.container_factory).to(factory);
             };
