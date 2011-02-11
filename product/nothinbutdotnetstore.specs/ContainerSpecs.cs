@@ -20,13 +20,12 @@ namespace nothinbutdotnetstore.specs
                 the_real_container = an<DependencyContainer>();
                 ContainerFactory factory = () => the_real_container;
                 change(() => Container.container_factory).to(factory);
-                
             };
 
             Because b = () =>
                 result = Container.resolve;
 
-            It should_return_the_container_adapter_configured_at_startup = () =>
+            It should_return_the_container_adapter_created_by_the_configured_container_factory = () =>
                 result.ShouldEqual(the_real_container);
 
             static DependencyContainer result;
