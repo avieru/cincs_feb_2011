@@ -1,3 +1,5 @@
+using System;
+
 namespace nothinbutdotnetstore.core.containers
 {
     public class BasicDependencyContainer : DependencyContainer
@@ -17,7 +19,15 @@ namespace nothinbutdotnetstore.core.containers
 
         Dependency cast_to<Dependency>(object dependency)
         {
-            return (Dependency) dependency;
+            try
+            {
+                var returning_dependency = (Dependency) dependency;
+                return returning_dependency;
+            }
+            catch (Exception original_exception)
+            {
+                throw new DependencyCreationException(dependency.GetType());
+            }
         }
     }
 }
