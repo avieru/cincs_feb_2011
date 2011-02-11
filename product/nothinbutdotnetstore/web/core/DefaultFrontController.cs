@@ -1,3 +1,5 @@
+using nothinbutdotnetstore.core.containers;
+
 namespace nothinbutdotnetstore.web.core
 {
     public class DefaultFrontController : FrontController
