@@ -5,7 +5,6 @@ using System.Web.Compilation;
 using nothinbutdotnetstore.core.containers;
 using nothinbutdotnetstore.tasks.startup.stubs;
 using nothinbutdotnetstore.tasks.stubs;
-using nothinbutdotnetstore.web.application.catalogbrowsing;
 using nothinbutdotnetstore.web.core;
 using nothinbutdotnetstore.web.core.stub;
 
@@ -54,7 +53,6 @@ namespace nothinbutdotnetstore.tasks.startup
         {
             all_factories.Add(typeof(Contract), new StubDependencyFactory<Contract>(
                                                     new BasicDependencyFactory(factory)));
-
         }
 
         static void register_instance<Contract>(Contract instance)
@@ -62,5 +60,4 @@ namespace nothinbutdotnetstore.tasks.startup
             register_factory<Contract>(() => instance);
         }
     }
-
 }

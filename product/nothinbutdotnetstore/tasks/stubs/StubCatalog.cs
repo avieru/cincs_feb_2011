@@ -36,6 +36,7 @@ namespace nothinbutdotnetstore.tasks.stubs
                 number_of_products = (number%2 == 0 ? 3 : 0)
             };
         }
+
         static IEnumerable<Item> create_a_set_of<Item>(int number, Func<int, Item> factory)
         {
             return Enumerable.Range(1, number).Select(factory);

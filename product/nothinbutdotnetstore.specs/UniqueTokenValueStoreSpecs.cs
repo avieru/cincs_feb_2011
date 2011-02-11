@@ -1,29 +1,23 @@
- using System.Collections.Generic;
- using Machine.Specifications;
- using Machine.Specifications.DevelopWithPassion.Rhino;
- using nothinbutdotnetstore.core;
- using nothinbutdotnetstore.web.core;
- using Machine.Specifications.DevelopWithPassion.Extensions;
- using System.Linq;
+using System.Collections.Generic;
+using System.Linq;
+using Machine.Specifications;
+using Machine.Specifications.DevelopWithPassion.Extensions;
+using Machine.Specifications.DevelopWithPassion.Rhino;
+using nothinbutdotnetstore.core;
 
 namespace nothinbutdotnetstore.specs
-{   
+{
     public class UniqueTokenValueStoreSpecs
     {
         public abstract class concern : Observes<UniqueTokenValueStore,
                                             DefaultUniqueTokenValueStore>
         {
-        
         }
 
         [Subject(typeof(DefaultUniqueTokenValueStore))]
         public class when_adding_an_item_to_the_store : concern
         {
-            Establish c = () =>
-            {
-                all_tokens = new Dictionary<string, object>();
-            };
-
+            Establish c = () => { all_tokens = new Dictionary<string, object>(); };
 
             Because b = () =>
             {
@@ -35,8 +29,7 @@ namespace nothinbutdotnetstore.specs
             It should_add_the_pair_to_the_list_of_tokens = () =>
                 all_tokens["some_key"].ShouldEqual(2);
 
-            static IDictionary<string,object> all_tokens;
-
+            static IDictionary<string, object> all_tokens;
         }
 
         public class when_attempting_to_add_a_token_with_the_same_key_twice : concern
@@ -45,9 +38,8 @@ namespace nothinbutdotnetstore.specs
             {
                 duplicate = "dup";
                 all_tokens = new Dictionary<string, object>();
-                all_tokens.Add(duplicate,23);
+                all_tokens.Add(duplicate, 23);
             };
-
 
             Because b = () =>
             {
@@ -58,7 +50,7 @@ namespace nothinbutdotnetstore.specs
             It should_preserve_the_original_value = () =>
                 all_tokens[duplicate].ShouldEqual(23);
 
-            static IDictionary<string,object> all_tokens;
+            static IDictionary<string, object> all_tokens;
             static string duplicate;
         }
 
@@ -69,7 +61,6 @@ namespace nothinbutdotnetstore.specs
                 duplicate = "dup";
                 all_tokens = new Dictionary<string, object>();
             };
-
 
             Because b = () =>
             {
@@ -82,7 +73,7 @@ namespace nothinbutdotnetstore.specs
             It should_preserve_the_original_value = () =>
                 all_tokens.Count.ShouldEqual(3);
 
-            static IDictionary<string,object> all_tokens;
+            static IDictionary<string, object> all_tokens;
             static string duplicate;
         }
 
@@ -95,7 +86,6 @@ namespace nothinbutdotnetstore.specs
                 all_tokens.Add("sdfsdf", 2);
             };
 
-
             Because b = () =>
             {
                 sut.downcast_to<DefaultUniqueTokenValueStore>().tokens = all_tokens;
@@ -106,9 +96,8 @@ namespace nothinbutdotnetstore.specs
             It should_return_the_iterator_for_keyvalue_pair_instances_of_items_in_the_store = () =>
                 result.Count().ShouldEqual(2);
 
-            static IDictionary<string,object> all_tokens;
-            static IEnumerable<KeyValuePair<string,object>> result;
+            static IDictionary<string, object> all_tokens;
+            static IEnumerable<KeyValuePair<string, object>> result;
         }
-        
     }
 }

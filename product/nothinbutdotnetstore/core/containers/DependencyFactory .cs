@@ -1,6 +1,6 @@
 namespace nothinbutdotnetstore.core.containers
 {
-    public interface DependencyFactory 
+    public interface DependencyFactory
     {
         object create();
     }

@@ -1,18 +1,17 @@
- using System.Web;
- using Machine.Specifications;
- using Machine.Specifications.DevelopWithPassion.Rhino;
- using nothinbutdotnetstore.specs.utility;
- using nothinbutdotnetstore.web.core;
- using Rhino.Mocks;
+using System.Web;
+using Machine.Specifications;
+using Machine.Specifications.DevelopWithPassion.Rhino;
+using nothinbutdotnetstore.specs.utility;
+using nothinbutdotnetstore.web.core;
+using Rhino.Mocks;
 
 namespace nothinbutdotnetstore.specs
-{   
+{
     public class BasicHandlerSpecs
     {
         public abstract class concern : Observes<IHttpHandler,
                                             BasicHandler>
         {
-        
         }
 
         [Subject(typeof(BasicHandler))]

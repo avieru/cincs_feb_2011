@@ -8,12 +8,12 @@ namespace nothinbutdotnetstore.specs.utility
     {
         public static HttpContext create_http_context()
         {
-            return new HttpContext(create_request(),create_response());
+            return new HttpContext(create_request(), create_response());
         }
 
         static HttpRequest create_request()
         {
-            return new HttpRequest("blah.aspx","http://localhost/blah.aspx",String.Empty);
+            return new HttpRequest("blah.aspx", "http://localhost/blah.aspx", String.Empty);
         }
 
         static HttpResponse create_response()
