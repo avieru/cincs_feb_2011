@@ -92,6 +92,7 @@
     <Compile Include="DependencyFactoriesSpecs.cs" />
     <Compile Include="EnumerableVisitorAttachment.cs" />
     <Compile Include="ExpressionToPropertyMapperSpecs.cs" />
+    <Compile Include="GreedyConstructorSelectionStrategySpecs.cs" />
     <Compile Include="IsFirstItemSpecs.cs" />
     <Compile Include="MagicWiringDependencyFactorySpecs.cs" />
     <Compile Include="ParametersKeyValuePairVisitorSpecs.cs" />

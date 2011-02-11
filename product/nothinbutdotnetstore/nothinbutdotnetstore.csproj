@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="core\AndCriteria.cs" />
     <Compile Include="core\ChainedVisitor.cs" />
+    <Compile Include="core\Command.cs" />
     <Compile Include="core\ConditionalVisitor.cs" />
     <Compile Include="core\containers\BasicDependencyContainer.cs" />
     <Compile Include="core\containers\BasicDependencyFactories.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="core\containers\DependencyCreationException.cs" />
     <Compile Include="core\containers\DependencyFactories.cs" />
     <Compile Include="core\containers\DependencyFactory .cs" />
+    <Compile Include="core\containers\GreedyConstructorSelectionStrategy.cs" />
     <Compile Include="core\containers\MagicWiringDependencyFactory.cs" />
     <Compile Include="core\containers\SpecialCaseDependencyFactory.cs" />
     <Compile Include="core\Criteria.cs" />
@@ -92,7 +94,15 @@
     <Compile Include="core\ValueReturningVisitior.cs" />
     <Compile Include="core\Visitor.cs" />
     <Compile Include="tasks\Catalog.cs" />
+    <Compile Include="tasks\startup\ConfigureApplicationCommands.cs" />
+    <Compile Include="tasks\startup\ConfigureCoreComponents.cs" />
+    <Compile Include="tasks\startup\ConfigureFrontController.cs" />
+    <Compile Include="tasks\startup\ConfigureServiceLayer.cs" />
+    <Compile Include="tasks\startup\ContainerRegistration.cs" />
+    <Compile Include="tasks\startup\DummyCommand.cs" />
+    <Compile Include="tasks\startup\Start.cs" />
     <Compile Include="tasks\startup\StartUp.cs" />
+    <Compile Include="tasks\startup\StartupCommand.cs" />
     <Compile Include="tasks\startup\stubs\StubDependencyFactory.cs" />
     <Compile Include="tasks\stubs\StubCatalog.cs" />
     <Compile Include="tasks\stubs\StubMissingDependencyFactory.cs" />
