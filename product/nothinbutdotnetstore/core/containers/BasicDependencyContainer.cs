@@ -1,3 +1,5 @@
+using System;
+
 namespace nothinbutdotnetstore.core.containers
 {
     public class BasicDependencyContainer : DependencyContainer
@@ -14,6 +16,11 @@ namespace nothinbutdotnetstore.core.containers
             return
                 cast_to<Dependency>(
                     dependency_factories.get_factory_that_can_create(typeof(Dependency)).create());
+        }
+
+        public object an(Type dependency_type)
+        {
+            throw new NotImplementedException();
         }
 
         Dependency cast_to<Dependency>(object dependency)
