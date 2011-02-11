@@ -67,9 +67,13 @@
     <Compile Include="core\AndCriteria.cs" />
     <Compile Include="core\ChainedVisitor.cs" />
     <Compile Include="core\ConditionalVisitor.cs" />
+    <Compile Include="core\containers\BasicDependencyContainer.cs" />
     <Compile Include="core\containers\Container.cs" />
     <Compile Include="core\containers\ContainerFactory .cs" />
     <Compile Include="core\containers\DependencyContainer .cs" />
+    <Compile Include="core\containers\DependencyCreationException.cs" />
+    <Compile Include="core\containers\DependencyFactories.cs" />
+    <Compile Include="core\containers\DependencyFactory .cs" />
     <Compile Include="core\Criteria.cs" />
     <Compile Include="core\DefaultExpressionToPropertyNameMapper.cs" />
     <Compile Include="core\DefaultUniqueTokenValueStore.cs" />

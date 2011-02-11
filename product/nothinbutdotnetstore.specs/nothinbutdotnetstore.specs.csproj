@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AndCriteriaSpecs.cs" />
+    <Compile Include="BasicDependencyContainerSpecs.cs" />
     <Compile Include="BasicHandlerSpecs.cs" />
     <Compile Include="ChainedVisitorSpecs.cs" />
     <Compile Include="CommandUrlSpecs.cs" />

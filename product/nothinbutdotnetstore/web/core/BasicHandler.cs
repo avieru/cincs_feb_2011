@@ -1,4 +1,5 @@
 using System.Web;
+using nothinbutdotnetstore.core.containers;
 
 namespace nothinbutdotnetstore.web.core
 {
@@ -7,6 +8,10 @@ namespace nothinbutdotnetstore.web.core
         FrontController front_controller;
         RequestFactory request_factory;
 
+        public BasicHandler():this(Container.resolve.an<FrontController>(),
+            Container.resolve.an<RequestFactory>())
+        {
+        }
 
         public BasicHandler(FrontController front_controller, RequestFactory request_factory)
         {

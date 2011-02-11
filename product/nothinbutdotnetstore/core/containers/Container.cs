@@ -11,7 +11,7 @@ namespace nothinbutdotnetstore.core.containers
 
         public static DependencyContainer resolve
         {
-            get { throw new NotImplementedException(); }
+            get { return container_factory(); }
         }
     }
 }
