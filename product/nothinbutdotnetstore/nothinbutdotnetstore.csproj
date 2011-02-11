@@ -71,6 +71,7 @@
     <Compile Include="core\containers\Container.cs" />
     <Compile Include="core\containers\ContainerFactory .cs" />
     <Compile Include="core\containers\DependencyContainer .cs" />
+    <Compile Include="core\containers\DependencyCreationException.cs" />
     <Compile Include="core\containers\DependencyFactories.cs" />
     <Compile Include="core\containers\DependencyFactory .cs" />
     <Compile Include="core\Criteria.cs" />
