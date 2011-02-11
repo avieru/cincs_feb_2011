@@ -13,42 +13,54 @@ namespace nothinbutdotnetstore.tasks.startup
 {
     public class Startup
     {
+        static IDictionary<Type, DependencyFactory> all_factories;
+
         public static void run()
         {
-            var command_registry = new DefaultCommandRegistry(new StubSetOfCommands());
-            var front_controller = new DefaultFrontController(command_registry);
+            all_factories = new Dictionary<Type, DependencyFactory>();
 
             DependencyContainer container = new BasicDependencyContainer(
-                new BasicDependencyFactories(generate_factories(front_controller), WebFactories.special_case_dependency_factory));
+                new BasicDependencyFactories(all_factories, WebFactories.special_case_dependency_factory));
 
             Container.container_factory = () => container;
+
+            configure_front_controller();
+            configure_service_layer();
+            configure_application_commands();
         }
 
-
-        static WebFormViewFactory get_webform_factory()
+        static void configure_application_commands()
         {
-            var form_path_registry = new StubFormPathRegistry();
-            return new WebFormViewFactory(form_path_registry, BuildManager.CreateInstanceFromVirtualPath);
         }
 
-
-        static IDictionary<Type, DependencyFactory> generate_factories(FrontController front_controller)
+        static void configure_service_layer()
         {
-            var catalog = new StubCatalog();
-            var renderer = new WebFormRenderer(() => HttpContext.Current, get_webform_factory());
-            IDictionary<Type, DependencyFactory> all_factories = new Dictionary<Type, DependencyFactory>();
-            all_factories.Add(typeof(FrontController), with_exception_handling<DefaultFrontController>(() => front_controller));
-            all_factories.Add(typeof(RequestFactory),with_exception_handling<RequestFactory>(() => new StubRequestFactory()));
-            all_factories.Add(typeof(Renderer),with_exception_handling<RequestFactory>(() => renderer));
-            all_factories.Add(typeof(ViewMainDepartmentsInTheStore),with_exception_handling<ViewMainDepartmentsInTheStore>(() => new ViewMainDepartmentsInTheStore(catalog, renderer)));
-            return all_factories;
+            register_factory<Catalog>(() => new StubCatalog());
         }
 
-
-        static DependencyFactory with_exception_handling<TypeToCreate>(Func<object> factory)
+        static void configure_front_controller()
         {
-            return new StubDependencyFactory<TypeToCreate>(
-                new BasicDependencyFactory(factory)); 
+            register_instance<PageFactory>(BuildManager.CreateInstanceFromVirtualPath);
+            register_instance<ActiveContextResolver>(() => HttpContext.Current);
+            register_factory<ViewFactory>(() => new WebFormViewFactory(Container.resolve.an<FormPathRegistry>(),
+                                                                       Container.resolve.an<PageFactory>()));
+            register_factory<FrontController>(() => new DefaultFrontController(Container.resolve.an<CommandRegistry>()));
+            register_factory<RequestFactory>(() => new StubRequestFactory());
+            register_factory<Renderer>(() => new WebFormRenderer(Container.resolve.an<ActiveContextResolver>(),
+                                                                 Container.resolve.an<ViewFactory>()));
+        }
+
+        static void register_factory<Contract>(Func<object> factory)
+        {
+            all_factories.Add(typeof(Contract), new StubDependencyFactory<Contract>(
+                                                    new BasicDependencyFactory(factory)));
+
+        }
+
+        static void register_instance<Contract>(Contract instance)
+        {
+            register_factory<Contract>(() => instance);
         }
     }
+
 }

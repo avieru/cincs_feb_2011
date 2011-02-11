@@ -93,6 +93,7 @@
     <Compile Include="EnumerableVisitorAttachment.cs" />
     <Compile Include="ExpressionToPropertyMapperSpecs.cs" />
     <Compile Include="IsFirstItemSpecs.cs" />
+    <Compile Include="MagicWiringDependencyFactorySpecs.cs" />
     <Compile Include="ParametersKeyValuePairVisitorSpecs.cs" />
     <Compile Include="RequestContainsPayloadWithDetailSpecs.cs" />
     <Compile Include="RequestIsForSpecs.cs" />
