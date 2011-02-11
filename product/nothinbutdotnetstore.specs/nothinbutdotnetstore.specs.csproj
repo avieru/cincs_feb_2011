@@ -98,6 +98,7 @@
     <Compile Include="RequestIsForSpecs.cs" />
     <Compile Include="spikes\ExpressionSpecs.cs" />
     <Compile Include="spikes\ExpressionUtility.cs" />
+    <Compile Include="StartupSpecs.cs" />
     <Compile Include="UniqueTokenValueStoreSpecs.cs" />
     <Compile Include="UrlBuilderFactorySpecs.cs" />
     <Compile Include="UrlBuilderSpecs.cs" />
