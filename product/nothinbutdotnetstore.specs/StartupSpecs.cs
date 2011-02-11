@@ -22,6 +22,7 @@ namespace nothinbutdotnetstore.specs
             {
                 Container.resolve.ShouldBeAn<BasicDependencyContainer>();
                 Container.resolve.an<FrontController>().ShouldBeAn<DefaultFrontController>();
+                Container.resolve.an<RequestFactory>().ShouldNotBeNull();
             };
         }
     }

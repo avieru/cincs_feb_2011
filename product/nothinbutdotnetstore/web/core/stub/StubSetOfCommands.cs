@@ -1,6 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using nothinbutdotnetstore.core.containers;
+using nothinbutdotnetstore.web.application.catalogbrowsing;
 
 namespace nothinbutdotnetstore.web.core.stub
 {
@@ -13,7 +14,8 @@ namespace nothinbutdotnetstore.web.core.stub
 
         public IEnumerator<RequestCommand> GetEnumerator()
         {
-            throw new NotImplementedException();
+            yield return new DefaultRequestCommand(new RequestIsFor<ViewMainDepartmentsInTheStore>().is_satisfied_by,
+                                                   Container.resolve.an<ViewMainDepartmentsInTheStore>());
         }
     }
 }
