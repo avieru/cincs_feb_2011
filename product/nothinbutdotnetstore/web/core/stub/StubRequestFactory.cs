@@ -41,7 +41,7 @@ namespace nothinbutdotnetstore.web.core.stub
 
             public string raw_url
             {
-                get { return the_current_context.Request.RawUrl;}
+                get { return HttpUtility.UrlDecode(the_current_context.Request.RawUrl);}
             }
         }
     }

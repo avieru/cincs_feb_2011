@@ -1,5 +1,4 @@
-﻿using System;
-using nothinbutdotnetstore.core;
+﻿using nothinbutdotnetstore.core;
 
 namespace nothinbutdotnetstore.web.core.urls
 {
@@ -25,14 +24,14 @@ namespace nothinbutdotnetstore.web.core.urls
                                                                      url_encoder_factory());
         }
 
-        public UrlBuilder<CommandToBuildUrlsTo,SomeDummyItem> basic()
+        public UrlBuilder<CommandToBuildUrlsTo, SomeDummyItem> basic()
         {
-            return For(new SomeDummyItem()).with(x => x.value);
+            return For(new SomeDummyItem {some_integer_value = 234}).with(x => x.some_integer_value);
         }
 
         public class SomeDummyItem
         {
-            public int value { get; set; } 
+            public int some_integer_value { get; set; }
         }
     }
 }
