@@ -13,14 +13,12 @@ namespace nothinbutdotnetstore.core.containers
 
         public Dependency an<Dependency>()
         {
-            return
-                cast_to<Dependency>(
-                    dependency_factories.get_factory_that_can_create(typeof(Dependency)).create());
+            return cast_to<Dependency>(an(typeof(Dependency)));
         }
 
         public object an(Type dependency_type)
         {
-            throw new NotImplementedException();
+            return dependency_factories.get_factory_that_can_create(dependency_type).create();
         }
 
         Dependency cast_to<Dependency>(object dependency)
