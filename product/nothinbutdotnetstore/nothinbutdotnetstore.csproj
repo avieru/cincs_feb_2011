@@ -90,6 +90,7 @@
     <Compile Include="core\ValueReturningVisitior.cs" />
     <Compile Include="core\Visitor.cs" />
     <Compile Include="tasks\Catalog.cs" />
+    <Compile Include="tasks\startup\StartUp.cs" />
     <Compile Include="tasks\stubs\StubCatalog.cs" />
     <Compile Include="web\application\catalogbrowsing\CatalogController.cs" />
     <Compile Include="web\application\catalogbrowsing\Department.cs" />
