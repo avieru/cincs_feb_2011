@@ -14,7 +14,7 @@ namespace nothinbutdotnetstore.web.core.stub
 
         public IEnumerator<RequestCommand> GetEnumerator()
         {
-            yield return new DefaultRequestCommand(new RequestIsFor<ViewMainDepartmentsInTheStore>().is_satisfied_by,
+            yield return new DefaultRequestCommand(x => true,
                                                    Container.resolve.an<ViewMainDepartmentsInTheStore>());
         }
     }

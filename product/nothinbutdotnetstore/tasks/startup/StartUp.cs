@@ -5,6 +5,7 @@ using System.Web.Compilation;
 using nothinbutdotnetstore.core.containers;
 using nothinbutdotnetstore.tasks.startup.stubs;
 using nothinbutdotnetstore.tasks.stubs;
+using nothinbutdotnetstore.web.application.catalogbrowsing;
 using nothinbutdotnetstore.web.core;
 using nothinbutdotnetstore.web.core.stub;
 
@@ -33,6 +34,8 @@ namespace nothinbutdotnetstore.tasks.startup
 
             all_factories.Add(typeof(RequestFactory),with_exception_handling<RequestFactory>(() => new StubRequestFactory()));
             all_factories.Add(typeof(Renderer),with_exception_handling<RequestFactory>(() => renderer));
+            all_factories.Add(typeof(ViewMainDepartmentsInTheStore),with_exception_handling<ViewMainDepartmentsInTheStore>(() =>
+                new ViewMainDepartmentsInTheStore(catalog, renderer)));
         }
 
         static DependencyFactory with_exception_handling<TypeToCreate>(Func<object> factory)
